@@ -11,6 +11,7 @@ const navLinks = [
   { href: "#food", label: "Food" },
   { href: "#gallery", label: "Atmosphere" },
   { href: "#reviews", label: "Reviews" },
+  { href: "#faq", label: "FAQ" },
   { href: "#visit", label: "Visit" },
 ] as const;
 

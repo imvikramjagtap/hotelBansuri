@@ -54,10 +54,14 @@ export function BrandHero() {
             </div>
           </div>
 
-          <p className="fade-up fade-up-1 mt-5 max-w-md text-base leading-snug text-cream-on-dark/90 sm:mt-6 sm:text-xl sm:leading-relaxed">
+          <p className="fade-up fade-up-1 mt-4 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream-on-dark/70 sm:text-xs">
             {lang === "en"
-              ? "Pure veg glass-deck dining near Shirdi — 360° views, covered for every season."
-              : "शिरडीजवळ शुद्ध शाकाहारी ग्लास डेक डायनिंग — ३६०° दृश्य, सर्व ऋतूंसाठी आश्रय."}
+              ? r.geoLockup
+              : "शुद्ध शाकाहारी गार्डन व फॅमिली रेस्टॉरंट · शिरडीजवळ · चांदेकसरे"}
+          </p>
+
+          <p className="fade-up fade-up-1 mt-3 max-w-lg text-base leading-snug text-cream-on-dark/90 sm:mt-4 sm:text-xl sm:leading-relaxed">
+            {lang === "en" ? r.heroLead : r.heroLeadMr}
           </p>
 
           <div className="fade-up fade-up-2 mt-7 flex flex-wrap items-center gap-3 sm:mt-8">

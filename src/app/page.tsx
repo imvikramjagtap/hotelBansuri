@@ -1,6 +1,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { restaurant } from "@/lib/restaurant";
+import {
+  buildFaqJsonLd,
+  buildRestaurantJsonLd,
+  buildWebSiteJsonLd,
+  faqs,
+} from "@/lib/seo";
 import { AtmosphereGallery } from "@/components/AtmosphereGallery";
 import { BrandHero } from "@/components/BrandHero";
 import {
@@ -81,9 +87,17 @@ function SectionHeading({
 export default function Home() {
   const r = restaurant;
   const featuredQuote = r.reviews[0];
+  const jsonLd = [buildRestaurantJsonLd(), buildFaqJsonLd(), buildWebSiteJsonLd()];
 
   return (
     <LogoLangProvider>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <a
         href="#trust"
         className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-60 focus:rounded-lg focus:bg-brand-orange focus:px-3 focus:py-2 focus:text-night"
@@ -100,7 +114,11 @@ export default function Home() {
         {/* Why — Ref B cards + current copy */}
         <section className="px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-14" id="why">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading eyebrow="Why Bansuri" title="More than a highway stop" center>
+            <SectionHeading
+              eyebrow="Why Bansuri near Shirdi"
+              title="A pure-veg garden stop worth the pause"
+              center
+            >
               {r.whyIntro}
             </SectionHeading>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -158,12 +176,12 @@ export default function Home() {
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
           <div className="relative mx-auto max-w-6xl">
             <SectionHeading
-              eyebrow="From our kitchen"
-              title="Home-style, not fast food"
+              eyebrow="Pure veg Indian kitchen"
+              title="Home-style plates for Shirdi travelers"
               light
               center
             >
-              Fresh ingredients and traditional recipes — the flavour of a family kitchen, not a highway canteen.
+              Fresh ingredients and traditional recipes — North Indian favourites, thalis, and family comfort food from a 100% vegetarian kitchen.
             </SectionHeading>
 
             <div className="grid gap-6 md:grid-cols-3">
@@ -197,7 +215,8 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-10 text-center text-sm text-cream-on-dark/45">
-              Full menu available in-store · Thalis, South Indian, North Indian &amp; more
+              Full menu in-store · Thalis, South Indian, North Indian · Ask staff about
+              Jain-friendly preparations
             </p>
           </div>
         </section>
@@ -299,8 +318,12 @@ export default function Home() {
 
         <section className="vein-bg px-4 py-20 sm:px-6 sm:py-24" id="reviews">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading eyebrow="Guest reviews" title="What guests are saying" center>
-              Warm words about the garden, pure veg kitchen, and calm stop near Shirdi.
+            <SectionHeading
+              eyebrow="Guest reviews"
+              title="Why guests call it a top veg stop near Shirdi"
+              center
+            >
+              Warm words about the garden, pure vegetarian kitchen, kids zone, and calm pause on the Sai Baba journey.
             </SectionHeading>
 
             <div className="grid gap-5 md:grid-cols-3">
@@ -324,20 +347,58 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ — traveler answers + FAQPage schema */}
+        <section className="px-4 py-20 sm:px-6 sm:py-24" id="faq" aria-labelledby="faq-heading">
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading
+              eyebrow="Good to know"
+              title="Pure veg near Shirdi — common questions"
+              center
+            >
+              Straight answers for pilgrims, Jain families, and highway travelers planning a stop.
+            </SectionHeading>
+
+            <div className="space-y-3">
+              {faqs.map((faq) => (
+                <details
+                  key={faq.question}
+                  className="group rounded-2xl border border-line bg-panel px-5 py-4 open:shadow-sm sm:px-6"
+                >
+                  <summary className="cursor-pointer list-none font-display text-lg font-bold tracking-tight text-leaf marker:content-none [&::-webkit-details-marker]:hidden">
+                    <span className="flex items-start justify-between gap-4">
+                      {faq.question}
+                      <span
+                        aria-hidden
+                        className="mt-1 shrink-0 text-brand-orange transition group-open:rotate-45"
+                      >
+                        +
+                      </span>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Compact Visit — A + B + current */}
         <section className="bg-night px-4 py-20 sm:px-6 sm:py-24" id="visit">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               eyebrow="Visit us"
-              title="Find your way to Bansuri"
+              title="Find Kashvee's Bansuri near Shirdi"
               light
               center
             >
-              On the Shirdi–Nashik highway in Chandekasare. Look for the glass decks.
+              Pure veg garden restaurant on the Shirdi–Nashik highway in Chandekasare. Look for
+              the glass decks.
             </SectionHeading>
 
             <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-night-soft p-7 sm:p-9">
+              <address className="rounded-2xl border border-white/10 bg-night-soft p-7 not-italic sm:p-9">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">
@@ -348,9 +409,11 @@ export default function Home() {
                         Location
                       </h3>
                       <p className="mt-1 text-sm text-cream-on-dark/60">
-                        {r.locality} · Near Shirdi / Kopargaon
+                        {r.locality} · Near Shirdi / Kopargaon · {r.pin}
                       </p>
-                      <p className="text-sm text-cream-on-dark/60">{r.corridor}</p>
+                      <p className="text-sm text-cream-on-dark/60">
+                        {r.corridor} · {r.distanceShirdi}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -399,11 +462,11 @@ export default function Home() {
                     Call to book
                   </a>
                 </div>
-              </div>
+              </address>
 
               <div className="min-h-[20rem] overflow-hidden rounded-2xl border border-white/10">
                 <iframe
-                  title="Bansuri on Google Maps"
+                  title="Kashvee's Bansuri Hotel — pure veg garden restaurant near Shirdi on Google Maps"
                   src={r.mapsEmbed}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -426,8 +489,8 @@ export default function Home() {
               className="h-9 w-auto object-contain"
             />
             <p className="mt-3 max-w-xs text-sm text-cream-on-dark/50">
-              {r.fullName} · {r.fullNameMr}. Pure vegetarian garden dining on the Shirdi–Nashik
-              highway.
+              {r.fullName} · {r.fullNameMr}. Pure vegetarian garden &amp; family restaurant near
+              Shirdi on the {r.corridor} — trusted by pilgrims and Jain families.
             </p>
           </div>
           <div>
@@ -457,6 +520,9 @@ export default function Home() {
               </a>
               <a href="#gallery" className="block text-cream-on-dark/50 hover:text-brand-orange">
                 Atmosphere
+              </a>
+              <a href="#faq" className="block text-cream-on-dark/50 hover:text-brand-orange">
+                FAQ
               </a>
               <a href="#visit" className="block text-cream-on-dark/50 hover:text-brand-orange">
                 Visit us

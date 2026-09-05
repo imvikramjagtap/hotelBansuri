@@ -8,7 +8,13 @@ export const restaurant = {
   listingName: "Bansuri Pure Veg Garden & Family Restaurant",
   tagline: "Pure veg. Open garden. Family table.",
   promise:
-    "A peaceful pure-veg stop for families on the Shirdi road — glass-deck dining with 360° views, cover in every season, and space for kids.",
+    "A peaceful pure-veg garden restaurant near Shirdi for families and pilgrims — glass-deck dining with 360° views, cover in every season, and space for kids.",
+  /** Visible geo lockup for crawlers & travelers (name collision risk). */
+  geoLockup: "Pure Veg Garden & Family Restaurant · Near Shirdi · Chandekasare",
+  heroLead:
+    "Pure veg garden dining near Shirdi — trusted by pilgrims and Jain families, with kids play, free parking, and 360° glass-deck views.",
+  heroLeadMr:
+    "शिरडीजवळ शुद्ध शाकाहारी गार्डन डायनिंग — यात्रेकरू व जैन कुटुंबांचा विश्वास; मुलांसाठी प्ले झोन, मोफत पार्किंग आणि ३६०° ग्लास डेक दृश्य.",
   logos: {
     en: {
       src: "/brand/logo-en-solid.png",
@@ -38,6 +44,8 @@ export const restaurant = {
     "https://maps.google.com/maps?q=19.8231246,74.4509533&z=15&output=embed",
   /** Same Google listing — guests open Maps to read / leave reviews */
   reviewsUrl: "https://maps.app.goo.gl/XSHPgAACpUqtxpBs8",
+  geo: { lat: 19.8231246, lng: 74.4509533 },
+  plusCode: "RFF2+69",
   locality: "Chandekasare, Sawali Vihir Kh.",
   region: "Maharashtra",
   pin: "423601",
@@ -50,7 +58,10 @@ export const restaurant = {
   hoursClose: "11:30 PM",
   cuisine: "Indian · Pure vegetarian",
   rating: "4.0",
+  /** Approximate Google review volume from MARKET_RESEARCH.md */
+  reviewCount: 345,
   localRank: "#1 of ~5 places to eat in Chandekasare",
+  priceBand: "₹200–400 per person",
   amenities: [
     { title: "Pure vegetarian kitchen", detail: "Full veg menu — clear trust for pilgrims and families." },
     { title: "Garden seating", detail: "Outdoor tables and greenery around the property — not a cramped highway box." },
@@ -63,12 +74,12 @@ export const restaurant = {
     { title: "Wheelchair accessible", detail: "Listed as accessible seating." },
   ],
   whyIntro:
-    "Most roadside veg restaurants are a quick, forgettable break. Bansuri was built to be the opposite — a place worth slowing down for.",
+    "Most veg stops near Shirdi are a quick, forgettable break. Bansuri was built to be the opposite — a pure-veg garden restaurant worth slowing down for.",
   pillars: [
     {
       id: "veg",
       title: "Pure Vegetarian",
-      body: "A 100% vegetarian kitchen — no ambiguity, no compromise. Trusted by pilgrims, Jain families, and vegetarians alike.",
+      body: "A 100% vegetarian kitchen — no ambiguity, no compromise. Trusted by Shirdi pilgrims, Jain families, and vegetarians who want clear pure-veg dining.",
     },
     {
       id: "garden",
@@ -106,22 +117,22 @@ export const restaurant = {
   travelers: {
     eyebrow: "For travelers & pilgrims",
     title: "Your stop between Shirdi & Nashik",
-    body: "Whether you're returning from the Sai Baba temple or heading toward Nashik, Bansuri sits on your route — a calm, clean, family-friendly break from the road.",
+    body: "Whether you're returning from the Sai Baba temple or heading toward Nashik, Bansuri sits on your route — a calm, clean, pure-veg family stop about 6–7 km from Shirdi.",
     points: [
       {
         id: "highway",
-        title: "On the highway",
-        body: "Right on the Shirdi–Nashik corridor — an easy stop without hunting for signs.",
+        title: "On the Shirdi–Nashik highway",
+        body: "Chandekasare corridor stop — easy for pilgrims, highway travelers, and Kopargaon families.",
       },
       {
         id: "hours",
         title: "Open early to late",
-        body: "8:30 AM to 11:30 PM, every day. Breakfast through dinner.",
+        body: "8:30 AM to 11:30 PM, every day. Breakfast through dinner after darshan.",
       },
       {
         id: "welcome",
-        title: "Clean & welcoming",
-        body: "Guests consistently praise the cleanliness and calm atmosphere.",
+        title: "Pure veg trust",
+        body: "100% vegetarian kitchen — a clear choice for pilgrims and Jain-leaning travelers.",
       },
       {
         id: "party",
@@ -179,19 +190,19 @@ export const restaurant = {
       span: "lg:col-span-2 lg:row-span-2",
       minH: "min-h-[16rem] sm:min-h-[22rem]",
       src: "/photos/glass-deck-day.jpg",
-      alt: "Bansuri double-decker glass dining pavilion rising above the garden",
+      alt: "Bansuri double-decker glass dining pavilion rising above the garden near Shirdi",
       images: [
         {
           src: "/photos/glass-deck-day.jpg",
-          alt: "Bansuri double-decker glass dining pavilion rising above the garden",
+          alt: "Bansuri double-decker glass dining pavilion rising above the garden near Shirdi",
         },
         {
           src: "/photos/glass-deck-night.jpg",
-          alt: "Bansuri double-decker glass dining pavilion lit up at night",
+          alt: "Bansuri pure veg glass dining pavilion lit up at night near Shirdi",
         },
         {
           src: "/photos/glass-deck-angle.jpg",
-          alt: "Angled view of Bansuri double-decker glass dining pavilion in the garden",
+          alt: "Angled view of Bansuri glass dining pavilion in the Chandekasare garden",
         },
       ],
     },
@@ -201,15 +212,15 @@ export const restaurant = {
       span: "",
       minH: "min-h-[11rem]",
       src: "/photos/garden-entrance-night.jpg",
-      alt: "Nighttime lit archway entrance into the Bansuri garden",
+      alt: "Nighttime lit archway entrance into the Bansuri pure veg garden near Shirdi",
       images: [
         {
           src: "/photos/garden-entrance-night.jpg",
-          alt: "Nighttime lit archway entrance into the Bansuri garden",
+          alt: "Nighttime lit archway entrance into the Bansuri pure veg garden near Shirdi",
         },
         {
           src: "/photos/garden-night-palms.jpg",
-          alt: "Palm-lined garden path and entrance lit up for evening dining",
+          alt: "Palm-lined garden path at Bansuri family restaurant near Shirdi",
         },
       ],
     },
@@ -219,7 +230,7 @@ export const restaurant = {
       span: "",
       minH: "min-h-[11rem]",
       src: "/photos/kids-play-area.jpg",
-      alt: "Kids play area with swings and slide beside the garden lawn",
+      alt: "Kids play area with swings and slide at Bansuri garden restaurant near Shirdi",
     },
     {
       id: "terrace",
@@ -227,7 +238,7 @@ export const restaurant = {
       span: "sm:col-span-2 lg:col-span-1",
       minH: "min-h-[13rem]",
       src: "/photos/terrace-party-night.jpg",
-      alt: "Upper glass deck at night decorated for a birthday celebration",
+      alt: "Upper glass deck at night at Kashvee's Bansuri Hotel near Shirdi",
     },
     {
       id: "sign",
@@ -243,7 +254,7 @@ export const restaurant = {
         },
         {
           src: "/photos/signboard-night.jpg",
-          alt: "Illuminated Bansuri night signboard with cuisine and banquet hall",
+          alt: "Illuminated Bansuri Pure Veg night signboard near Shirdi with banquet hall",
         },
       ],
     },
@@ -253,15 +264,15 @@ export const restaurant = {
       span: "lg:col-span-2",
       minH: "min-h-[12rem]",
       src: "/photos/party-hall.jpg",
-      alt: "Banquet hall set with white chairs and floral stage backdrop",
+      alt: "Banquet hall at Bansuri pure veg restaurant Chandekasare near Shirdi",
       images: [
         {
           src: "/photos/party-hall.jpg",
-          alt: "Banquet hall set with white chairs and floral stage backdrop",
+          alt: "Banquet hall at Bansuri pure veg restaurant Chandekasare near Shirdi",
         },
         {
           src: "/photos/party-hall-birthday.jpg",
-          alt: "Party hall decorated with balloons and a happy birthday setup",
+          alt: "Party hall decorated for a birthday celebration at Bansuri near Shirdi",
         },
       ],
     },
@@ -271,7 +282,7 @@ export const restaurant = {
       span: "col-span-2 lg:col-span-2",
       minH: "min-h-[14rem] sm:min-h-[18rem] lg:min-h-[20rem]",
       src: "/photos/exterior-overview.jpg",
-      alt: "Bansuri Pure Veg Family Garden Restaurant exterior with parking forecourt",
+      alt: "Bansuri Pure Veg Family Garden Restaurant exterior with parking near Shirdi",
     },
     {
       id: "swings",
@@ -279,15 +290,15 @@ export const restaurant = {
       span: "",
       minH: "min-h-[11rem]",
       src: "/photos/garden-swing-night.jpg",
-      alt: "Garden swing lit with fairy lights for evening seating",
+      alt: "Garden swing lit with fairy lights for evening seating at Bansuri near Shirdi",
       images: [
         {
           src: "/photos/garden-swing-night.jpg",
-          alt: "Garden swing lit with fairy lights for evening seating",
+          alt: "Garden swing lit with fairy lights for evening seating at Bansuri near Shirdi",
         },
         {
           src: "/photos/garden-swings-night.jpg",
-          alt: "Covered twin garden swings glowing under string lights at night",
+          alt: "Covered twin garden swings glowing under string lights at night near Shirdi",
         },
       ],
     },
@@ -297,22 +308,22 @@ export const restaurant = {
       span: "sm:col-span-2",
       minH: "min-h-[14rem]",
       src: "/photos/dining-hall.jpg",
-      alt: "Bright indoor family dining hall with long tables and booth seating",
+      alt: "Bright indoor family dining hall at Kashvee's Bansuri pure veg restaurant near Shirdi",
     },
   ],
   photos: {
     hero: {
       src: "/photos/glass-deck-night.jpg",
-      alt: "Bansuri double-decker glass dining pavilion lit up at night",
+      alt: "Kashvee's Bansuri Hotel glass-deck dining pavilion near Shirdi lit up at night",
     },
     /** No plated-food shots yet — dining hall stands in for kitchen ambience */
     food: {
       src: "/photos/dining-hall.jpg",
-      alt: "Bansuri indoor dining hall where family thalis and North Indian plates are served",
+      alt: "Pure veg family dining hall at Bansuri garden restaurant near Shirdi",
     },
     evening: {
       src: "/photos/garden-night-palms.jpg",
-      alt: "Palm-lined garden path and entrance lit up for evening dining",
+      alt: "Palm-lined garden path at Bansuri pure veg restaurant near Shirdi for evening dining",
     },
   },
 } as const;

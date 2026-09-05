@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Figtree, Montserrat, Noto_Sans_Devanagari } from "next/font/google";
+import { seo } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const figtree = Figtree({
@@ -30,16 +32,68 @@ const notoDevanagari = Noto_Sans_Devanagari({
   display: "swap",
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  title: "Kashvee's Bansuri Hotel — Pure Veg Garden near Shirdi",
-  description:
-    "Kashvee's Bansuri Hotel (काशीज् बांसुरी हॉटेल) — pure vegetarian garden & family restaurant in Chandekasare on the Shirdi–Nashik Highway. Call +91 98901 48008.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: seo.title,
+    template: "%s | Kashvee's Bansuri Hotel",
+  },
+  description: seo.description,
+  keywords: [...seo.keywords],
+  applicationName: "Kashvee's Bansuri Hotel",
+  authors: [{ name: "Kashvee's Bansuri Hotel" }],
+  creator: "Kashvee's Bansuri Hotel",
+  publisher: "Kashvee's Bansuri Hotel",
+  category: "restaurant",
+  classification: "Pure Vegetarian Garden Restaurant",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-IN": "/",
+      "mr-IN": "/",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Kashvee's Bansuri Hotel — Pure Veg near Shirdi",
-    description:
-      "Peaceful pure-veg garden dining for families and pilgrims. Open 8:30 AM – 11:30 PM.",
     type: "website",
     locale: "en_IN",
+    alternateLocale: ["mr_IN"],
+    url: "/",
+    siteName: "Kashvee's Bansuri Hotel",
+    title: seo.titleShort,
+    description: seo.ogDescription,
+    images: [
+      {
+        url: seo.ogImage.url,
+        width: seo.ogImage.width,
+        height: seo.ogImage.height,
+        alt: seo.ogImage.alt,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.titleShort,
+    description: seo.ogDescription,
+    images: [seo.ogImage.url],
+  },
+  other: {
+    "geo.region": "IN-MH",
+    "geo.placename": "Chandekasare, Shirdi",
+    "geo.position": "19.8231246;74.4509533",
+    ICBM: "19.8231246, 74.4509533",
   },
 };
 
