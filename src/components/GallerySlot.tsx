@@ -15,16 +15,26 @@ type GallerySlotProps = {
   src: string;
   alt: string;
   images?: readonly GalleryImage[];
+  onOpen?: (src: string) => void;
 };
 
 const INTERVAL_MS = 4000;
 const SWIPE_THRESHOLD = 40;
 
-export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlotProps) {
+export function GallerySlot({
+  label,
+  span,
+  minH,
+  src,
+  alt,
+  images,
+  onOpen,
+}: GallerySlotProps) {
   const slides = images && images.length > 0 ? images : [{ src, alt }];
   const multi = slides.length > 1;
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
+  const didSwipe = useRef(false);
 
   const goTo = (next: number) => {
     const len = slides.length;
@@ -48,26 +58,44 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
   }, [multi, slides.length, index]);
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    if (!multi) return;
     touchX.current = event.clientX;
+    didSwipe.current = false;
   };
 
   const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
-    if (!multi || touchX.current == null) return;
+    if (touchX.current == null) return;
     const delta = event.clientX - touchX.current;
     touchX.current = null;
-    if (Math.abs(delta) < SWIPE_THRESHOLD) return;
-    if (delta < 0) goNext();
-    else goPrev();
+
+    if (multi && Math.abs(delta) >= SWIPE_THRESHOLD) {
+      didSwipe.current = true;
+      if (delta < 0) goNext();
+      else goPrev();
+      return;
+    }
+
+    if (!didSwipe.current && Math.abs(delta) < SWIPE_THRESHOLD) {
+      onOpen?.(slides[index]?.src ?? src);
+    }
   };
 
   return (
     <div
-      className={`group relative flex h-full ${minH} ${span} flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
+      role={onOpen ? "button" : undefined}
+      tabIndex={onOpen ? 0 : undefined}
+      aria-label={onOpen ? `Open ${label} in full gallery` : undefined}
+      className={`group relative flex h-full ${minH} ${span} cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
       onPointerCancel={() => {
         touchX.current = null;
+      }}
+      onKeyDown={(event) => {
+        if (!onOpen) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onOpen(slides[index]?.src ?? src);
+        }
       }}
     >
       <div className="absolute inset-0 overflow-hidden" aria-live="polite">
@@ -102,6 +130,7 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
               e.stopPropagation();
               goPrev();
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             className="absolute top-1/2 left-2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-night/55 text-cream-on-dark opacity-100 backdrop-blur-sm transition hover:bg-night/75 sm:opacity-0 sm:group-hover:opacity-100"
             aria-label={`Previous ${label} photo`}
           >
@@ -113,6 +142,7 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
               e.stopPropagation();
               goNext();
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             className="absolute top-1/2 right-2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-night/55 text-cream-on-dark opacity-100 backdrop-blur-sm transition hover:bg-night/75 sm:opacity-0 sm:group-hover:opacity-100"
             aria-label={`Next ${label} photo`}
           >
@@ -136,8 +166,9 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
                   e.stopPropagation();
                   goTo(i);
                 }}
+                onPointerDown={(e) => e.stopPropagation()}
                 className={`h-2 w-2 rounded-full transition ${
-                  i === index ? "bg-brand-orange scale-110" : "bg-white/40 hover:bg-white/70"
+                  i === index ? "scale-110 bg-brand-orange" : "bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}
@@ -150,12 +181,7 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
 
 function Chevron({ dir }: { dir: "left" | "right" }) {
   return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      className="h-4 w-4"
-      aria-hidden
-    >
+    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden>
       <path
         d={dir === "left" ? "M12 4L6 10l6 6" : "M8 4l6 6-6 6"}
         stroke="currentColor"

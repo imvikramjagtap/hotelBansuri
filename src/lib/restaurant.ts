@@ -202,6 +202,16 @@ export const restaurant = {
       minH: "min-h-[11rem]",
       src: "/photos/garden-entrance-night.jpg",
       alt: "Nighttime lit archway entrance into the Bansuri garden",
+      images: [
+        {
+          src: "/photos/garden-entrance-night.jpg",
+          alt: "Nighttime lit archway entrance into the Bansuri garden",
+        },
+        {
+          src: "/photos/garden-night-palms.jpg",
+          alt: "Palm-lined garden path and entrance lit up for evening dining",
+        },
+      ],
     },
     {
       id: "kids",
@@ -258,10 +268,28 @@ export const restaurant = {
     {
       id: "parking",
       label: "Parking & approach",
-      span: "",
-      minH: "min-h-[10rem]",
+      span: "col-span-2 lg:col-span-2",
+      minH: "min-h-[14rem] sm:min-h-[18rem] lg:min-h-[20rem]",
       src: "/photos/exterior-overview.jpg",
       alt: "Bansuri Pure Veg Family Garden Restaurant exterior with parking forecourt",
+    },
+    {
+      id: "swings",
+      label: "Evening swings",
+      span: "",
+      minH: "min-h-[11rem]",
+      src: "/photos/garden-swing-night.jpg",
+      alt: "Garden swing lit with fairy lights for evening seating",
+      images: [
+        {
+          src: "/photos/garden-swing-night.jpg",
+          alt: "Garden swing lit with fairy lights for evening seating",
+        },
+        {
+          src: "/photos/garden-swings-night.jpg",
+          alt: "Covered twin garden swings glowing under string lights at night",
+        },
+      ],
     },
     {
       id: "family",

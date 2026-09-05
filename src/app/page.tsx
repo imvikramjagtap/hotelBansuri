@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { restaurant } from "@/lib/restaurant";
+import { AtmosphereGallery } from "@/components/AtmosphereGallery";
 import { BrandHero } from "@/components/BrandHero";
-import { GallerySlot } from "@/components/GallerySlot";
 import {
   IconClock,
   IconGarden,
@@ -149,19 +149,7 @@ export default function Home() {
               {r.story.body}
             </SectionHeading>
 
-            <div className="grid auto-rows-[minmax(11rem,auto)] grid-cols-2 gap-3 lg:grid-cols-4 lg:auto-rows-[minmax(12rem,auto)] lg:gap-4">
-              {r.photoSlots.map((slot) => (
-                <GallerySlot
-                  key={slot.id}
-                  label={slot.label}
-                  span={slot.span}
-                  minH={slot.minH}
-                  src={slot.src}
-                  alt={slot.alt}
-                  images={"images" in slot ? slot.images : undefined}
-                />
-              ))}
-            </div>
+            <AtmosphereGallery slots={r.photoSlots} />
           </div>
         </section>
 
