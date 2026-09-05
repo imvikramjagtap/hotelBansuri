@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { restaurant } from "@/lib/restaurant";
 import { BrandHero } from "@/components/BrandHero";
+import { GallerySlot } from "@/components/GallerySlot";
 import {
   IconClock,
   IconGarden,
@@ -141,7 +142,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               eyebrow="The atmosphere"
-              title="Dine under the open sky"
+              title="Elevated dining, every season"
               light
               center
             >
@@ -150,22 +151,15 @@ export default function Home() {
 
             <div className="grid auto-rows-fr grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
               {r.photoSlots.map((slot) => (
-                <div
+                <GallerySlot
                   key={slot.id}
-                  className={`group relative flex ${slot.minH} ${slot.span} flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
-                >
-                  <Image
-                    src={slot.src}
-                    alt={slot.alt}
-                    fill
-                    sizes="(max-width:1024px) 50vw, 25vw"
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-night/90 via-night/25 to-transparent" />
-                  <div className="relative p-4 sm:p-5">
-                    <p className="font-semibold text-cream-on-dark">{slot.label}</p>
-                  </div>
-                </div>
+                  label={slot.label}
+                  span={slot.span}
+                  minH={slot.minH}
+                  src={slot.src}
+                  alt={slot.alt}
+                  images={"images" in slot ? slot.images : undefined}
+                />
               ))}
             </div>
           </div>
@@ -351,7 +345,7 @@ export default function Home() {
               light
               center
             >
-              On the Shirdi–Nashik highway in Chandekasare. Look for the garden.
+              On the Shirdi–Nashik highway in Chandekasare. Look for the glass decks.
             </SectionHeading>
 
             <div className="grid gap-6 lg:grid-cols-2">

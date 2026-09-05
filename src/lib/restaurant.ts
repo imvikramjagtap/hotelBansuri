@@ -8,7 +8,7 @@ export const restaurant = {
   listingName: "Bansuri Pure Veg Garden & Family Restaurant",
   tagline: "Pure veg. Open garden. Family table.",
   promise:
-    "A peaceful pure-veg garden pause for families traveling to Shirdi — good food, open air, and space for kids.",
+    "A peaceful pure-veg stop for families on the Shirdi road — glass-deck dining with 360° views, cover in every season, and space for kids.",
   logos: {
     en: {
       src: "/brand/logo-en-solid.png",
@@ -53,10 +53,10 @@ export const restaurant = {
   localRank: "#1 of ~5 places to eat in Chandekasare",
   amenities: [
     { title: "Pure vegetarian kitchen", detail: "Full veg menu — clear trust for pilgrims and families." },
-    { title: "Garden & lawn seating", detail: "Outdoor tables and open air, not a cramped highway box." },
+    { title: "Garden seating", detail: "Outdoor tables and greenery around the property — not a cramped highway box." },
     { title: "Kids play area", detail: "A kids zone guests mention again and again." },
     { title: "Free parking", detail: "Ample parking for cars on the Shirdi corridor." },
-    { title: "Terrace dining", detail: "Especially nice for evening / dinner views." },
+    { title: "Double-deck glass dining", detail: "Elevated glass pavilion with 360° views — covered for sun and rain, open for every season." },
     { title: "Birthday & party hall", detail: "Dedicated hall for birthdays and functions — call to book your celebration." },
     { title: "Takeaway & delivery", detail: "Listed for takeaway and delivery when you need a quick stop." },
     { title: "Card payments", detail: "Credit cards accepted." },
@@ -72,8 +72,8 @@ export const restaurant = {
     },
     {
       id: "garden",
-      title: "Garden & Lawn",
-      body: "Dine under open skies surrounded by greenery. A maintained garden and lawn — not a cramped highway dhaba box.",
+      title: "Glass Deck Dining",
+      body: "Our signature double-decker pavilion — sit upstairs for fine dining with glass all around, a 360° view, and cover from sun and rain.",
     },
     {
       id: "kids",
@@ -102,12 +102,6 @@ export const restaurant = {
       note: "Home-style gravies, thalis, and everyday plates — ask for the full board in-store.",
       badge: "Comfort",
     },
-  ],
-  amenityChips: [
-    { id: "parking", label: "Free parking" },
-    { id: "kids", label: "Kids play area" },
-    { id: "hours", label: "Open late daily" },
-    { id: "party", label: "Party hall" },
   ],
   travelers: {
     eyebrow: "For travelers & pilgrims",
@@ -138,8 +132,8 @@ export const restaurant = {
   },
   story: {
     eyebrow: "The place",
-    title: "Come for the food. Stay for the garden.",
-    body: "Open lawns, terrace evenings, and space for kids — built so a highway meal feels like a pause worth taking.",
+    title: "Come for the food. Stay for the view.",
+    body: "Our double-decker glass pavilion lifts you above the garden — fine dining upstairs, glass all around for a full 360° view, and a covered roof so sun or rain never cuts the meal short.",
   },
   reviews: [
     {
@@ -180,12 +174,26 @@ export const restaurant = {
   ],
   photoSlots: [
     {
-      id: "lawn",
-      label: "Garden & lawn",
+      id: "deck",
+      label: "Double-deck dining",
       span: "lg:col-span-2 lg:row-span-2",
       minH: "min-h-[16rem] sm:min-h-[22rem]",
-      src: "/photos/garden-pavilions-day.jpg",
-      alt: "Bansuri garden pavilions and lawn on a clear day",
+      src: "/photos/glass-deck-day.jpg",
+      alt: "Bansuri double-decker glass dining pavilion rising above the garden",
+      images: [
+        {
+          src: "/photos/glass-deck-day.jpg",
+          alt: "Bansuri double-decker glass dining pavilion rising above the garden",
+        },
+        {
+          src: "/photos/glass-deck-night.jpg",
+          alt: "Bansuri double-decker glass dining pavilion lit up at night",
+        },
+        {
+          src: "/photos/glass-deck-angle.jpg",
+          alt: "Angled view of Bansuri double-decker glass dining pavilion in the garden",
+        },
+      ],
     },
     {
       id: "entrance",
@@ -205,11 +213,11 @@ export const restaurant = {
     },
     {
       id: "terrace",
-      label: "Evening terrace",
+      label: "Upper deck evenings",
       span: "sm:col-span-2 lg:col-span-1",
       minH: "min-h-[13rem]",
       src: "/photos/terrace-party-night.jpg",
-      alt: "Upper terrace at night decorated for a birthday celebration",
+      alt: "Upper glass deck at night decorated for a birthday celebration",
     },
     {
       id: "hall",
@@ -218,6 +226,16 @@ export const restaurant = {
       minH: "min-h-[12rem]",
       src: "/photos/party-hall.jpg",
       alt: "Banquet hall set with white chairs and floral stage backdrop",
+      images: [
+        {
+          src: "/photos/party-hall.jpg",
+          alt: "Banquet hall set with white chairs and floral stage backdrop",
+        },
+        {
+          src: "/photos/party-hall-birthday.jpg",
+          alt: "Party hall decorated with balloons and a happy birthday setup",
+        },
+      ],
     },
     {
       id: "parking",
@@ -234,6 +252,16 @@ export const restaurant = {
       minH: "min-h-[10rem]",
       src: "/photos/highway-sign.jpg",
       alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
+      images: [
+        {
+          src: "/photos/highway-sign.jpg",
+          alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
+        },
+        {
+          src: "/photos/signboard-night.jpg",
+          alt: "Illuminated Bansuri night signboard with cuisine and banquet hall",
+        },
+      ],
     },
     {
       id: "family",
@@ -246,8 +274,8 @@ export const restaurant = {
   ],
   photos: {
     hero: {
-      src: "/photos/garden-pavilions-night.jpg",
-      alt: "Bansuri garden dining pavilions glowing at night across the lawn",
+      src: "/photos/glass-deck-night.jpg",
+      alt: "Bansuri double-decker glass dining pavilion lit up at night",
     },
     /** No plated-food shots yet — dining hall stands in for kitchen ambience */
     food: {
