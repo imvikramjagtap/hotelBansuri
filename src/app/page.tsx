@@ -149,7 +149,7 @@ export default function Home() {
               {r.story.body}
             </SectionHeading>
 
-            <div className="grid auto-rows-fr grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+            <div className="grid auto-rows-[minmax(11rem,auto)] grid-cols-2 gap-3 lg:grid-cols-4 lg:auto-rows-[minmax(12rem,auto)] lg:gap-4">
               {r.photoSlots.map((slot) => (
                 <GallerySlot
                   key={slot.id}

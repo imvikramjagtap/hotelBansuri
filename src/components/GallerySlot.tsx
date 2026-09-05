@@ -63,7 +63,7 @@ export function GallerySlot({ label, span, minH, src, alt, images }: GallerySlot
 
   return (
     <div
-      className={`group relative flex ${minH} ${span} flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
+      className={`group relative flex h-full ${minH} ${span} flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
       onPointerCancel={() => {

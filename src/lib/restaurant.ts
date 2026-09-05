@@ -220,6 +220,24 @@ export const restaurant = {
       alt: "Upper glass deck at night decorated for a birthday celebration",
     },
     {
+      id: "sign",
+      label: "Highway sign",
+      span: "lg:row-span-2",
+      minH: "min-h-[14rem] sm:min-h-[16rem] lg:min-h-0",
+      src: "/photos/highway-sign.jpg",
+      alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
+      images: [
+        {
+          src: "/photos/highway-sign.jpg",
+          alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
+        },
+        {
+          src: "/photos/signboard-night.jpg",
+          alt: "Illuminated Bansuri night signboard with cuisine and banquet hall",
+        },
+      ],
+    },
+    {
       id: "hall",
       label: "Party hall",
       span: "lg:col-span-2",
@@ -244,24 +262,6 @@ export const restaurant = {
       minH: "min-h-[10rem]",
       src: "/photos/exterior-overview.jpg",
       alt: "Bansuri Pure Veg Family Garden Restaurant exterior with parking forecourt",
-    },
-    {
-      id: "sign",
-      label: "Highway sign",
-      span: "",
-      minH: "min-h-[10rem]",
-      src: "/photos/highway-sign.jpg",
-      alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
-      images: [
-        {
-          src: "/photos/highway-sign.jpg",
-          alt: "Bansuri Pure Veg roadside pylon sign on the Shirdi–Nashik highway",
-        },
-        {
-          src: "/photos/signboard-night.jpg",
-          alt: "Illuminated Bansuri night signboard with cuisine and banquet hall",
-        },
-      ],
     },
     {
       id: "family",
