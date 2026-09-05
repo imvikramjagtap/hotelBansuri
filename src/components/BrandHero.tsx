@@ -55,22 +55,32 @@ export function BrandHero() {
             </span>
           </a>
 
-          <div className="fade-up fade-up-1 mt-7">
-            <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.28em] text-brand-orange sm:text-xs">
-              {lang === "en" ? "Kashvee's" : "काशीज्"}
-            </p>
-            <h1
-              className={
-                lang === "en"
-                  ? "font-brand brand-wordmark text-[clamp(3.25rem,12vw,6.5rem)]"
-                  : "font-brand-mr brand-wordmark-mr text-[clamp(3rem,11vw,5.75rem)] font-black"
-              }
-            >
-              {lang === "en" ? "Bansuri" : "बांसुरी"}
-            </h1>
-            <p className="mt-2 font-display text-lg font-bold tracking-[0.18em] text-leaf sm:text-xl">
-              {lang === "en" ? "HOTEL" : "हॉटेल"}
-            </p>
+          <div className="fade-up fade-up-1 mt-7 flex items-center gap-4 sm:gap-5">
+            <Image
+              src={r.mark.src}
+              alt=""
+              width={r.mark.width}
+              height={r.mark.height}
+              priority
+              className="h-19 w-auto shrink-0 object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)] sm:h-25"
+            />
+            <div className="min-w-0">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.28em] text-brand-orange sm:mb-2 sm:text-xs">
+                {lang === "en" ? "Kashvee's" : "काशीज्"}
+              </p>
+              <h1
+                className={
+                  lang === "en"
+                    ? "font-brand brand-wordmark text-[clamp(2.75rem,10vw,5.75rem)]"
+                    : "font-brand-mr brand-wordmark-mr text-[clamp(2.5rem,9vw,5rem)] font-black"
+                }
+              >
+                {lang === "en" ? "Bansuri" : "बांसुरी"}
+              </h1>
+              <p className="mt-1 font-display text-base font-bold tracking-[0.18em] text-leaf sm:mt-2 sm:text-xl">
+                {lang === "en" ? "HOTEL" : "हॉटेल"}
+              </p>
+            </div>
           </div>
 
           <p className="fade-up fade-up-2 mt-5 text-xl font-light tracking-wide text-brand-orange sm:text-2xl">

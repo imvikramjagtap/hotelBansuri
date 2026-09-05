@@ -23,6 +23,13 @@ export const restaurant = {
       height: 222,
     },
   },
+  /** Leaf mark only — no wordmark text */
+  mark: {
+    src: "/brand/mark-leaf.png",
+    alt: "Bansuri leaf emblem",
+    width: 325,
+    height: 463,
+  },
   phoneDisplay: "+91 98901 48008",
   phoneTel: "+919890148008",
   whatsapp: "https://wa.me/919890148008",
