@@ -117,12 +117,12 @@ export function MobileGalleryCoverflow({
   };
 
   return (
-    <div>
+    <div className="w-full max-w-full overflow-x-clip">
       <p className="mb-3 text-center text-[0.7rem] font-bold uppercase tracking-[0.2em] text-brand-orange">
         {title}
       </p>
       <div
-        className="relative mx-auto h-[22rem] w-full touch-pan-y select-none sm:h-[25rem]"
+        className="relative mx-auto h-[22rem] w-full max-w-full touch-pan-y overflow-x-clip select-none sm:h-[25rem]"
         style={{ perspective: "1100px" }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -132,7 +132,7 @@ export function MobileGalleryCoverflow({
         }}
       >
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center overflow-visible"
           style={{ transformStyle: "preserve-3d" }}
         >
           {slots.map((slot, index) => {

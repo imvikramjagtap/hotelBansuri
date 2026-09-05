@@ -38,7 +38,7 @@ export function AtmosphereGallery({ slots }: { slots: readonly Slot[] }) {
 
   return (
     <>
-      <div className="space-y-10 lg:hidden">
+      <div className="space-y-10 overflow-x-clip lg:hidden">
         <MobileGalleryCoverflow
           title="Garden & decks"
           slots={outdoor}

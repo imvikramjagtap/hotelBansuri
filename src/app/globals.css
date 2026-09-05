@@ -45,12 +45,18 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  scrollbar-gutter: stable;
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-figtree), system-ui, sans-serif;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 ::selection {

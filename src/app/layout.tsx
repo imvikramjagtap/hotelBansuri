@@ -110,7 +110,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${figtree.variable} ${montserrat.variable} ${archivoBlack.variable} ${notoDevanagari.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="flex min-h-full max-w-full flex-col overflow-x-clip font-sans">
         {children}
         <Analytics />
       </body>

@@ -36,11 +36,12 @@ export function StickyDock() {
   return (
     <nav
       aria-label="Quick actions"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-line/80 bg-panel/95 px-3 pb-[max(0.65rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_30px_rgba(20,32,25,0.12)] backdrop-blur-md md:hidden"
+      className="fixed bottom-0 left-0 z-50 w-full max-w-full border-t border-line/80 bg-panel/95 px-3 pt-2 pb-[max(0.65rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(20,32,25,0.12)] backdrop-blur-md md:hidden"
+      style={{ transform: "translateZ(0)" }}
     >
       <ul className="mx-auto grid max-w-lg grid-cols-3 gap-2">
         {items.map((item) => (
-          <li key={item.label}>
+          <li key={item.label} className="min-w-0">
             <a
               href={item.href}
               {...(item.external
@@ -48,8 +49,8 @@ export function StickyDock() {
                 : {})}
               className={
                 item.primary
-                  ? "flex min-h-12 flex-col items-center justify-center rounded-xl bg-brand-orange px-2 py-2 text-center text-white active:bg-brand-orange-deep"
-                  : "flex min-h-12 flex-col items-center justify-center rounded-xl border border-line bg-bg px-2 py-2 text-center text-ink active:bg-bg-deep"
+                  ? "flex min-h-12 w-full flex-col items-center justify-center rounded-xl bg-brand-orange px-2 py-2 text-center text-white active:bg-brand-orange-deep"
+                  : "flex min-h-12 w-full flex-col items-center justify-center rounded-xl border border-line bg-bg px-2 py-2 text-center text-ink active:bg-bg-deep"
               }
             >
               <span className="text-sm font-semibold leading-none">{item.label}</span>
