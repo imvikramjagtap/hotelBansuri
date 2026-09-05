@@ -53,7 +53,7 @@ export function SiteHeader() {
             width={logo.width}
             height={logo.height}
             priority
-            className="h-9 w-auto object-contain object-left sm:h-10"
+            className="h-9 w-auto rounded-md object-contain object-left shadow-sm sm:h-10"
           />
         </a>
 

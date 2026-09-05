@@ -152,25 +152,18 @@ export default function Home() {
               {r.photoSlots.map((slot) => (
                 <div
                   key={slot.id}
-                  className={`group relative flex ${slot.minH} ${slot.span} flex-col justify-end overflow-hidden rounded-2xl border border-dashed border-white/15 bg-night-soft`}
+                  className={`group relative flex ${slot.minH} ${slot.span} flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-night-soft`}
                 >
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-70"
-                    aria-hidden
-                    style={{
-                      background:
-                        slot.id === "lawn" || slot.id === "family"
-                          ? "radial-gradient(ellipse at 30% 20%, rgba(8,144,64,0.22), transparent 55%)"
-                          : slot.id === "hall" || slot.id === "terrace"
-                            ? "radial-gradient(ellipse at 70% 80%, rgba(248,144,32,0.2), transparent 50%)"
-                            : "radial-gradient(ellipse at 50% 50%, rgba(8,144,64,0.1), transparent 60%)",
-                    }}
+                  <Image
+                    src={slot.src}
+                    alt={slot.alt}
+                    fill
+                    sizes="(max-width:1024px) 50vw, 25vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-linear-to-t from-night/90 via-night/25 to-transparent" />
                   <div className="relative p-4 sm:p-5">
-                    <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-brand-orange">
-                      Photo coming
-                    </span>
-                    <p className="mt-1 font-semibold text-cream-on-dark">{slot.label}</p>
+                    <p className="font-semibold text-cream-on-dark">{slot.label}</p>
                   </div>
                 </div>
               ))}

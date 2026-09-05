@@ -19,7 +19,7 @@ const chipIcons = {
 } as const;
 
 export function BrandHero() {
-  const { lang, logo } = useLogoLang();
+  const { lang } = useLogoLang();
   const r = restaurant;
 
   return (
@@ -55,15 +55,22 @@ export function BrandHero() {
             </span>
           </a>
 
-          <div className="fade-up fade-up-1 mt-6">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              priority
-              className="h-auto w-full max-w-68 object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] sm:max-w-88"
-            />
+          <div className="fade-up fade-up-1 mt-7">
+            <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.28em] text-brand-orange sm:text-xs">
+              {lang === "en" ? "Kashvee's" : "काशीज्"}
+            </p>
+            <h1
+              className={
+                lang === "en"
+                  ? "font-brand brand-wordmark text-[clamp(3.25rem,12vw,6.5rem)]"
+                  : "font-brand-mr brand-wordmark-mr text-[clamp(3rem,11vw,5.75rem)] font-black"
+              }
+            >
+              {lang === "en" ? "Bansuri" : "बांसुरी"}
+            </h1>
+            <p className="mt-2 font-display text-lg font-bold tracking-[0.18em] text-leaf sm:text-xl">
+              {lang === "en" ? "HOTEL" : "हॉटेल"}
+            </p>
           </div>
 
           <p className="fade-up fade-up-2 mt-5 text-xl font-light tracking-wide text-brand-orange sm:text-2xl">
