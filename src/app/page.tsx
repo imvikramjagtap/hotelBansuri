@@ -8,13 +8,18 @@ import {
   IconGoogle,
   IconKids,
   IconLeaf,
+  IconMapPin,
+  IconNav,
   IconParking,
   IconParty,
+  IconPhone,
   IconQuote,
   StarRow,
 } from "@/components/Icons";
+import { LogoLangProvider } from "@/components/LogoLangProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import { StickyDock } from "@/components/StickyDock";
+import { TrustStrip } from "@/components/TrustStrip";
 
 const pillarIcons = {
   veg: IconLeaf,
@@ -23,25 +28,50 @@ const pillarIcons = {
   parking: IconParking,
 } as const;
 
+const travelerIcons = {
+  highway: IconMapPin,
+  hours: IconClock,
+  welcome: IconLeaf,
+  party: IconParty,
+} as const;
+
 function SectionHeading({
   eyebrow,
   title,
+  light,
+  center,
   children,
 }: {
   eyebrow: string;
   title: string;
+  light?: boolean;
+  center?: boolean;
   children?: ReactNode;
 }) {
   return (
-    <header className="mb-6 max-w-xl">
-      <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-brand-orange">
+    <header className={`mb-10 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
+      <p
+        className={`mb-2 text-[0.7rem] font-bold uppercase tracking-[0.22em] ${
+          light ? "text-brand-orange" : "text-brand-orange"
+        }`}
+      >
         {eyebrow}
       </p>
-      <h2 className="font-display text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-leaf sm:text-[2.1rem]">
+      <h2
+        className={`font-display text-[1.85rem] font-bold leading-[1.12] tracking-[-0.02em] sm:text-[2.35rem] ${
+          light ? "text-cream-on-dark" : "text-leaf"
+        }`}
+      >
         {title}
       </h2>
       {children ? (
-        <p className="mt-3 text-[1.02rem] leading-relaxed text-muted">{children}</p>
+        <p
+          className={`mt-4 text-lg leading-relaxed ${
+            light ? "text-cream-on-dark/65" : "text-muted"
+          }`}
+        >
+          {children}
+        </p>
       ) : null}
     </header>
   );
@@ -49,12 +79,13 @@ function SectionHeading({
 
 export default function Home() {
   const r = restaurant;
+  const featuredQuote = r.reviews[0];
 
   return (
-    <>
+    <LogoLangProvider>
       <a
-        href="#details"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-brand-orange focus:px-3 focus:py-2 focus:text-white"
+        href="#trust"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-60 focus:rounded-lg focus:bg-brand-orange focus:px-3 focus:py-2 focus:text-night"
       >
         Skip to details
       </a>
@@ -63,325 +94,407 @@ export default function Home() {
 
       <main className="flex-1 pb-28 md:pb-0">
         <BrandHero />
+        <TrustStrip />
 
-        <section id="details" className="relative overflow-hidden bg-night px-4 py-10 text-cream-on-dark sm:px-6 sm:py-12">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-80"
-            aria-hidden
-            style={{
-              background:
-                "radial-gradient(ellipse 60% 80% at 0% 50%, rgba(248,144,32,0.22), transparent 55%), radial-gradient(ellipse 50% 70% at 100% 40%, rgba(8,144,64,0.28), transparent 50%)",
-            }}
-          />
-          <div className="relative mx-auto grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-brand-orange">
-                <IconClock className="h-5 w-5" />
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em]">
-                  Open daily
-                </p>
-              </div>
-              <p className="mt-3 font-display text-[1.45rem] font-bold leading-snug tracking-tight text-white sm:text-[1.55rem]">
-                {r.hoursOpen}
-                <span className="mx-1.5 text-brand-orange">–</span>
-                {r.hoursClose}
-              </p>
-              <p className="mt-2 text-sm text-cream-on-dark/60">Morning tea to late dinner</p>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-brand-orange">
-                <IconLeaf className="h-5 w-5" />
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em]">
-                  Kitchen
-                </p>
-              </div>
-              <p className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight text-white sm:text-[1.7rem]">
-                Pure veg
-              </p>
-              <p className="mt-2 text-sm text-cream-on-dark/60">Indian · family favourites</p>
-            </div>
-
-            <a
-              href={r.reviewsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative block overflow-hidden rounded-3xl bg-brand-orange p-5 text-white shadow-[0_16px_40px_rgba(248,144,32,0.35)] transition hover:brightness-105"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/80">
-                  Google rating
-                </p>
-                <IconGoogle className="h-5 w-5 rounded-full bg-white p-0.5" />
-              </div>
-              <div className="mt-2 flex items-end gap-2">
-                <p className="font-display text-5xl font-extrabold leading-none tracking-tight">
-                  {r.rating}
-                </p>
-                <p className="mb-1.5 text-lg font-bold text-white/85">/ 5</p>
-              </div>
-              <div className="mt-2">
-                <StarRow rating={4} className="text-white" />
-              </div>
-              <p className="mt-2 text-sm font-medium text-white/90">
-                See reviews on Google →
-              </p>
-            </a>
-
-            <div className="rounded-3xl border border-leaf/40 bg-leaf p-5 text-white shadow-[0_16px_40px_rgba(8,144,64,0.35)]">
-              <div className="flex items-center gap-2 text-white/90">
-                <IconParty className="h-5 w-5" />
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em]">
-                  Celebrations
-                </p>
-              </div>
-              <p className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight sm:text-[1.7rem]">
-                Party hall
-              </p>
-              <p className="mt-2 text-sm text-white/85">
-                Birthdays &amp; functions — call to book
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="vein-bg px-4 py-12 sm:px-6 sm:py-16" id="why">
-          <div className="mx-auto max-w-5xl">
-            <SectionHeading eyebrow="Why Bansuri" title="More than a highway stop">
+        {/* Why — Ref B cards + current copy */}
+        <section className="vein-bg px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-14" id="why">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeading eyebrow="Why Bansuri" title="More than a highway stop" center>
               {r.whyIntro}
             </SectionHeading>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {r.pillars.map((pillar) => {
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {r.pillars.map((pillar, i) => {
                 const Icon = pillarIcons[pillar.id];
                 return (
                   <article
                     key={pillar.id}
-                    className="flex gap-4 rounded-3xl border border-line bg-panel p-5 sm:p-6"
+                    className="group rounded-2xl border border-line/80 bg-panel p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                    style={{ transitionDelay: `${i * 40}ms` }}
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-leaf/10 text-leaf">
-                      <Icon className="h-6 w-6" />
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-leaf text-cream-on-dark transition-colors group-hover:bg-brand-orange group-hover:text-night">
+                      <Icon className="h-7 w-7" />
                     </div>
-                    <div>
-                      <h3 className="font-display text-lg font-bold tracking-tight text-leaf">
-                        {pillar.title}
-                      </h3>
-                      <p className="mt-2 text-[0.98rem] leading-relaxed text-muted">
-                        {pillar.body}
-                      </p>
-                    </div>
+                    <h3 className="font-display text-xl font-bold tracking-tight text-leaf">
+                      {pillar.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{pillar.body}</p>
                   </article>
                 );
               })}
             </div>
+            <p className="mt-10 text-center">
+              <a
+                href={r.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:text-brand-orange-deep"
+              >
+                See it on Google Maps
+                <span aria-hidden>→</span>
+              </a>
+            </p>
           </div>
         </section>
 
-        {/* Photo-first gallery — empty slots until owner photos arrive */}
-        <section className="bg-panel px-4 py-12 sm:px-6 sm:py-16" id="gallery" aria-label="Photo gallery">
-          <div className="mx-auto max-w-5xl">
-            <header className="mb-6 max-w-lg">
-              <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-brand-orange">
-                See the place
-              </p>
-              <h2 className="font-display text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-leaf sm:text-[2.1rem]">
-                Garden, food &amp; celebrations
-              </h2>
-            </header>
+        {/* Atmosphere masonry — Ref B + empty slots */}
+        <section className="bg-night px-4 py-20 sm:px-6 sm:py-24" id="gallery">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeading
+              eyebrow="The atmosphere"
+              title="Dine under the open sky"
+              light
+              center
+            >
+              {r.story.body}
+            </SectionHeading>
 
-            <div className="grid auto-rows-fr grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
+            <div className="grid auto-rows-fr grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
               {r.photoSlots.map((slot) => (
                 <div
                   key={slot.id}
-                  className={`group relative flex ${slot.minH} ${slot.span} flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-line bg-bg-deep sm:rounded-3xl`}
+                  className={`group relative flex ${slot.minH} ${slot.span} flex-col justify-end overflow-hidden rounded-2xl border border-dashed border-white/15 bg-night-soft`}
                 >
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-60"
+                    className="pointer-events-none absolute inset-0 opacity-70"
                     aria-hidden
                     style={{
                       background:
                         slot.id === "lawn" || slot.id === "family"
-                          ? "radial-gradient(ellipse at 30% 20%, rgba(8,144,64,0.12), transparent 55%)"
+                          ? "radial-gradient(ellipse at 30% 20%, rgba(8,144,64,0.22), transparent 55%)"
                           : slot.id === "hall" || slot.id === "terrace"
-                            ? "radial-gradient(ellipse at 70% 80%, rgba(248,144,32,0.12), transparent 50%)"
-                            : "radial-gradient(ellipse at 50% 50%, rgba(8,144,64,0.06), transparent 60%)",
+                            ? "radial-gradient(ellipse at 70% 80%, rgba(248,144,32,0.2), transparent 50%)"
+                            : "radial-gradient(ellipse at 50% 50%, rgba(8,144,64,0.1), transparent 60%)",
                     }}
                   />
-                  <span className="relative text-[0.65rem] font-bold uppercase tracking-[0.14em] text-muted/80">
-                    Photo
-                  </span>
-                  <span className="relative mt-1.5 px-3 text-center text-sm font-semibold text-ink-soft">
-                    {slot.label}
-                  </span>
+                  <div className="relative p-4 sm:p-5">
+                    <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-brand-orange">
+                      Photo coming
+                    </span>
+                    <p className="mt-1 font-semibold text-cream-on-dark">{slot.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="vein-bg px-4 py-14 sm:px-6 sm:py-20" id="reviews">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-10 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
-              <header className="max-w-xl">
-                <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-brand-orange">
-                  Guests say
-                </p>
-                <h2 className="font-display text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-leaf sm:text-[2.1rem]">
-                  Warm words from the road
-                </h2>
-                <p className="mt-3 text-[1.02rem] leading-relaxed text-muted">
-                  Real Google reviews about the garden, pure veg kitchen, and calm stop near Shirdi.
-                </p>
-              </header>
+        {/* Food cards — Ref B + A restraint */}
+        <section className="relative overflow-hidden bg-night-soft px-4 py-20 sm:px-6 sm:py-24" id="food">
+          <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
+          <div className="relative mx-auto max-w-6xl">
+            <SectionHeading
+              eyebrow="From our kitchen"
+              title="Home-style, not fast food"
+              light
+              center
+            >
+              Fresh ingredients and traditional recipes — the flavour of a family kitchen, not a highway canteen.
+            </SectionHeading>
 
-              <a
-                href={r.reviewsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 shrink-0 items-center gap-3 rounded-2xl border border-line bg-panel px-4 py-3 shadow-sm transition hover:border-brand-orange"
-              >
-                <IconGoogle className="h-8 w-8" />
-                <span className="text-left">
-                  <span className="flex items-center gap-2">
-                    <span className="font-display text-2xl font-extrabold text-ink">
-                      {r.rating}
-                    </span>
-                    <StarRow rating={4} />
-                  </span>
-                  <span className="block text-sm font-semibold text-leaf">
-                    Read on Google Maps →
-                  </span>
-                </span>
-              </a>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-3 md:gap-6">
-              {r.reviews.map((review) => (
-                <blockquote
-                  key={review.quote}
-                  className="flex h-full flex-col rounded-[1.75rem] border border-line bg-panel p-6 sm:p-7"
+            <div className="grid gap-6 md:grid-cols-3">
+              {r.dishes.map((dish) => (
+                <article
+                  key={dish.name}
+                  className="group overflow-hidden rounded-2xl border border-white/10 bg-night"
                 >
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <IconQuote className="h-7 w-7 text-brand-orange/70" />
-                    <StarRow rating={review.stars} />
+                  <div className="relative h-56 overflow-hidden sm:h-64">
+                    <Image
+                      src={r.photos.food.src}
+                      alt={dish.name}
+                      fill
+                      sizes="(max-width:768px) 100vw, 33vw"
+                      className="object-cover transition duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-night via-night/20 to-transparent" />
+                    <span className="absolute right-4 top-4 rounded-full bg-brand-orange px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-night">
+                      {dish.badge}
+                    </span>
                   </div>
-                  <p className="flex-1 font-display text-[1.05rem] font-semibold leading-relaxed text-ink">
-                    “{review.quote}”
-                  </p>
-                  <footer className="mt-6 flex items-center gap-2 border-t border-line pt-4 text-xs font-semibold text-muted">
-                    <IconGoogle className="h-4 w-4" />
-                    {review.source}
-                  </footer>
-                </blockquote>
+                  <div className="p-5 sm:p-6">
+                    <h3 className="font-display text-2xl font-bold text-cream-on-dark">
+                      {dish.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-cream-on-dark/60">
+                      {dish.note}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
+            <p className="mt-10 text-center text-sm text-cream-on-dark/45">
+              Full menu available in-store · Thalis, South Indian, North Indian &amp; more
+            </p>
+          </div>
+        </section>
 
-            <div className="mt-8 text-center sm:mt-10">
-              <a
-                href={r.reviewsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-leaf px-6 text-sm font-bold text-white hover:bg-leaf-deep"
-              >
-                <IconGoogle className="h-5 w-5 rounded-full bg-white p-0.5" />
-                See all Google reviews
-              </a>
+        {/* Travelers — Ref B split */}
+        <section className="vein-bg px-4 py-20 sm:px-6 sm:py-24" id="travelers">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <SectionHeading eyebrow={r.travelers.eyebrow} title={r.travelers.title}>
+                {r.travelers.body}
+              </SectionHeading>
+              <div className="space-y-5">
+                {r.travelers.points.map((point) => {
+                  const Icon = travelerIcons[point.id];
+                  return (
+                    <div key={point.id} className="flex items-start gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-leaf/10 text-leaf">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-ink">{point.title}</h3>
+                        <p className="mt-0.5 text-sm text-muted">{point.body}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-night/20">
+              <div className="relative h-[22rem] sm:h-[28rem]">
+                <Image
+                  src={r.photos.evening.src}
+                  alt={r.photos.evening.alt}
+                  fill
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
+                <div className="rounded-2xl bg-panel/95 p-5 backdrop-blur-sm">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-center">
+                      <p className="font-display text-3xl font-bold text-brand-orange">~7</p>
+                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                        km to Shirdi
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-line" />
+                    <div className="text-center">
+                      <p className="font-display text-3xl font-bold text-brand-orange">
+                        {r.hoursOpen}
+                      </p>
+                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                        Opening
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-line" />
+                    <div className="text-center">
+                      <p className="font-display text-3xl font-bold text-brand-orange">Hall</p>
+                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                        Parties
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-panel px-4 py-10 sm:px-6 sm:py-12" id="visit">
-          <div className="mx-auto grid max-w-5xl gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+        {/* Rating banner — Ref A + reviews */}
+        <section className="bg-brand-orange px-4 py-10 sm:px-6 sm:py-12" id="rating-banner">
+          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
-              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-brand-orange">
-                Visit
+              <div className="flex items-center gap-3">
+                <p className="font-display text-5xl font-extrabold text-night">{r.rating}</p>
+                <div>
+                  <StarRow rating={4} className="text-night" />
+                  <p className="mt-1 text-sm font-semibold text-night/80">Google rating</p>
+                </div>
+              </div>
+              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-night/90">
+                “{featuredQuote.quote}”
               </p>
-              <h2 className="font-display text-2xl font-bold tracking-tight text-leaf sm:text-[1.85rem]">
-                Find us on the highway
-              </h2>
+            </div>
+            <a
+              href={r.reviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-night px-6 text-sm font-bold text-cream-on-dark hover:bg-night-soft"
+            >
+              <IconGoogle className="h-5 w-5 rounded-full bg-white p-0.5" />
+              Read on Google Maps
+            </a>
+          </div>
+        </section>
 
-              <div className="mt-4 space-y-3 rounded-2xl border border-line bg-bg px-4 py-4 text-sm">
-                <p className="font-semibold text-ink">
-                  {r.fullName}
-                  <span className="mt-0.5 block font-medium text-leaf">{r.fullNameMr}</span>
-                </p>
-                <p className="text-muted">
-                  {r.locality} · Near Shirdi / Kopargaon
-                  <span className="mt-0.5 block">{r.corridor}</span>
-                </p>
-                <p className="text-ink">
-                  <span className="font-semibold">{r.hoursShort}</span>
-                  <span className="text-muted"> · daily</span>
-                </p>
-                <p>
+        <section className="vein-bg px-4 py-20 sm:px-6 sm:py-24" id="reviews">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeading eyebrow="Guest reviews" title="What guests are saying" center>
+              Warm words about the garden, pure veg kitchen, and calm stop near Shirdi.
+            </SectionHeading>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {r.reviews.map((review) => (
+                <figure
+                  key={review.id}
+                  className="relative flex h-full flex-col rounded-2xl border border-line bg-panel p-6 shadow-sm sm:p-7"
+                >
+                  <IconQuote className="absolute right-5 top-5 h-8 w-8 text-line" />
+                  <StarRow rating={review.stars} />
+                  <blockquote className="mt-4 flex-1 text-[1.02rem] leading-relaxed text-ink-soft">
+                    “{review.quote}”
+                  </blockquote>
+                  <figcaption className="mt-5 flex items-center gap-2 text-sm font-semibold text-muted">
+                    <IconGoogle className="h-4 w-4" />
+                    {review.source}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Compact Visit — A + B + current */}
+        <section className="bg-night px-4 py-20 sm:px-6 sm:py-24" id="visit">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeading
+              eyebrow="Visit us"
+              title="Find your way to Bansuri"
+              light
+              center
+            >
+              On the Shirdi–Nashik highway in Chandekasare. Look for the garden.
+            </SectionHeading>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-night-soft p-7 sm:p-9">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">
+                      <IconMapPin className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-cream-on-dark">
+                        Location
+                      </h3>
+                      <p className="mt-1 text-sm text-cream-on-dark/60">
+                        {r.locality} · Near Shirdi / Kopargaon
+                      </p>
+                      <p className="text-sm text-cream-on-dark/60">{r.corridor}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">
+                      <IconClock className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-cream-on-dark">
+                        Hours
+                      </h3>
+                      <p className="mt-1 text-sm text-cream-on-dark/60">{r.hoursShort}</p>
+                      <p className="text-sm text-cream-on-dark/60">Open daily</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">
+                      <IconPhone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-cream-on-dark">
+                        Contact
+                      </h3>
+                      <p className="mt-1 text-sm text-cream-on-dark/60">{r.phoneDisplay}</p>
+                      <p className="text-sm text-cream-on-dark/60">
+                        Pure veg · Party hall · Free parking
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={r.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-brand-orange px-5 text-sm font-bold text-night hover:bg-brand-orange-deep"
+                  >
+                    <IconNav className="h-4 w-4" />
+                    Get directions
+                  </a>
                   <a
                     href={`tel:${r.phoneTel}`}
-                    className="font-semibold text-leaf underline-offset-2 hover:underline"
+                    className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full border border-cream-on-dark/25 px-5 text-sm font-semibold text-cream-on-dark hover:bg-white/10"
                   >
-                    {r.phoneDisplay}
+                    <IconPhone className="h-4 w-4" />
+                    Call to book
                   </a>
-                </p>
-                <p className="text-muted">Pure veg · Party hall · Free parking</p>
+                </div>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <a
-                  href={`tel:${r.phoneTel}`}
-                  className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-orange px-4 text-sm font-bold text-white sm:flex-none"
-                >
-                  Call
-                </a>
-                <a
-                  href={r.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-leaf px-4 text-sm font-bold text-white sm:flex-none"
-                >
-                  Open Maps
-                </a>
-                <a
-                  href={r.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center rounded-full border border-line bg-panel px-4 text-sm font-semibold text-ink"
-                >
-                  WhatsApp
-                </a>
+              <div className="min-h-[20rem] overflow-hidden rounded-2xl border border-white/10">
+                <iframe
+                  title="Bansuri on Google Maps"
+                  src={r.mapsEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-full min-h-[20rem] w-full border-0"
+                />
               </div>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-line">
-              <iframe
-                title="Bansuri on Google Maps"
-                src={r.mapsEmbed}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-56 w-full border-0 sm:h-full sm:min-h-[18rem]"
-              />
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-line bg-night px-4 py-8 text-cream-on-dark sm:px-6">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-4">
+      <footer className="border-t border-white/10 bg-night px-4 py-12 text-cream-on-dark sm:px-6">
+        <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
+          <div>
             <Image
               src={r.logos.en.src}
               alt=""
               width={160}
               height={56}
-              className="h-10 w-auto rounded bg-white px-2 py-1 object-contain"
+              className="h-9 w-auto object-contain"
             />
-            <div>
-              <p className="text-sm font-semibold">{r.fullName}</p>
-              <p className="text-sm text-cream-on-dark/65">{r.fullNameMr}</p>
+            <p className="mt-3 max-w-xs text-sm text-cream-on-dark/50">
+              {r.fullName} · {r.fullNameMr}. Pure vegetarian garden dining on the Shirdi–Nashik
+              highway.
+            </p>
+          </div>
+          <div>
+            <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-brand-orange">
+              Find us
+            </h4>
+            <div className="space-y-2 text-sm text-cream-on-dark/50">
+              <p>
+                {r.locality} · {r.corridor}
+              </p>
+              <p>{r.phoneDisplay}</p>
+              <p>
+                {r.hoursShort} · Open daily
+              </p>
             </div>
           </div>
-          <p className="text-sm text-cream-on-dark/55">{r.phoneDisplay}</p>
+          <div>
+            <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-brand-orange">
+              Quick links
+            </h4>
+            <div className="space-y-2 text-sm">
+              <a href="#why" className="block text-cream-on-dark/50 hover:text-brand-orange">
+                Why Bansuri
+              </a>
+              <a href="#food" className="block text-cream-on-dark/50 hover:text-brand-orange">
+                Our food
+              </a>
+              <a href="#gallery" className="block text-cream-on-dark/50 hover:text-brand-orange">
+                Atmosphere
+              </a>
+              <a href="#visit" className="block text-cream-on-dark/50 hover:text-brand-orange">
+                Visit us
+              </a>
+            </div>
+          </div>
         </div>
+        <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 pt-6 text-center text-xs text-cream-on-dark/35">
+          © {new Date().getFullYear()} {r.fullName}. All rights reserved.
+        </p>
       </footer>
 
       <StickyDock />
-    </>
+    </LogoLangProvider>
   );
 }

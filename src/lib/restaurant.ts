@@ -11,16 +11,16 @@ export const restaurant = {
     "A peaceful pure-veg garden pause for families traveling to Shirdi — good food, open air, and space for kids.",
   logos: {
     en: {
-      src: "/brand/logo-en.png",
+      src: "/brand/logo-en-clear.png",
       alt: "Kashvee's Bansuri Hotel logo",
-      width: 744,
-      height: 258,
+      width: 372,
+      height: 129,
     },
     mr: {
-      src: "/brand/logo-mr.png",
+      src: "/brand/logo-mr-clear.png",
       alt: "काशीज् बांसुरी हॉटेल लोगो",
-      width: 836,
-      height: 444,
+      width: 418,
+      height: 222,
     },
   },
   phoneDisplay: "+91 98901 48008",
@@ -81,40 +81,76 @@ export const restaurant = {
   ],
   dishes: [
     {
-      name: "Butter garlic naan",
-      note: "Frequently praised as a standout bread.",
-      status: "Confirm with kitchen",
+      name: "Garlic Butter Naan",
+      note: "Fresh from the tandoor — soft, buttery, and fragrant. The bread guests rave about.",
+      badge: "Must Order",
     },
     {
-      name: "Paneer butter masala",
-      note: "Classic comfort gravy for family tables.",
-      status: "Confirm with kitchen",
+      name: "Paneer Butter Masala",
+      note: "Cottage cheese in a rich tomato gravy — classic comfort for family tables.",
+      badge: "House Favourite",
     },
     {
-      name: "Paneer makhamali",
-      note: "Mentioned as a possible house specialty.",
-      status: "Confirm with kitchen",
-    },
-    {
-      name: "Masala khakhra & papad",
-      note: "Light starters for a traveler halt.",
-      status: "Confirm with kitchen",
+      name: "Dal & thali favourites",
+      note: "Home-style gravies, thalis, and everyday plates — ask for the full board in-store.",
+      badge: "Comfort",
     },
   ],
+  amenityChips: [
+    { id: "parking", label: "Free parking" },
+    { id: "kids", label: "Kids play area" },
+    { id: "hours", label: "Open late daily" },
+    { id: "party", label: "Party hall" },
+  ],
+  travelers: {
+    eyebrow: "For travelers & pilgrims",
+    title: "Your stop between Shirdi & Nashik",
+    body: "Whether you're returning from the Sai Baba temple or heading toward Nashik, Bansuri sits on your route — a calm, clean, family-friendly break from the road.",
+    points: [
+      {
+        id: "highway",
+        title: "On the highway",
+        body: "Right on the Shirdi–Nashik corridor — an easy stop without hunting for signs.",
+      },
+      {
+        id: "hours",
+        title: "Open early to late",
+        body: "8:30 AM to 11:30 PM, every day. Breakfast through dinner.",
+      },
+      {
+        id: "welcome",
+        title: "Clean & welcoming",
+        body: "Guests consistently praise the cleanliness and calm atmosphere.",
+      },
+      {
+        id: "party",
+        title: "Birthday & party hall",
+        body: "Dedicated hall for celebrations — call ahead to book your date.",
+      },
+    ],
+  },
+  story: {
+    eyebrow: "The place",
+    title: "Come for the food. Stay for the garden.",
+    body: "Open lawns, terrace evenings, and space for kids — built so a highway meal feels like a pause worth taking.",
+  },
   reviews: [
     {
+      id: "garden-kids",
       quote:
         "Beautiful place… children’s play area, garden and lawn — food was authentic and too yummy.",
       source: "Google review",
       stars: 5,
     },
     {
+      id: "pure-veg",
       quote:
         "Pure veg restaurant and best quality of food… best veg restaurant near to Shirdi — must visit once.",
       source: "Google review",
       stars: 5,
     },
     {
+      id: "parking-calm",
       quote:
         "Peaceful place. Loved the ambience. Food quality was awesome… ample parking space.",
       source: "Google review",

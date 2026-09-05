@@ -6,14 +6,15 @@
   --brand-orange-deep: #e07810;
   --leaf: #089040;
   --leaf-deep: #067536;
-  --bg: #f7faf6;
-  --bg-deep: #eaf3ea;
+  --bg: #f3f7f3;
+  --bg-deep: #e6efe7;
   --ink: #142019;
   --ink-soft: #3a4a3f;
   --muted: #5c6b60;
   --line: #cfe0d1;
   --panel: #ffffff;
-  --night: #101018;
+  --night: #0b1510;
+  --night-soft: #122018;
   --cream-on-dark: #eef5ee;
 }
 
@@ -32,6 +33,7 @@
   --color-marigold-deep: var(--brand-orange-deep);
   --color-panel: var(--panel);
   --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
   --color-cream-on-dark: var(--cream-on-dark);
   --font-sans: var(--font-figtree);
   --font-display: var(--font-display-family);
@@ -59,10 +61,10 @@ body {
   font-family: var(--font-display-family), system-ui, sans-serif;
 }
 
-@keyframes rise-in {
+@keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -70,28 +72,51 @@ body {
   }
 }
 
-.rise {
-  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+@keyframes bounce-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
 }
 
-.rise-delay-1 {
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fade-up-1 {
   animation-delay: 0.08s;
 }
-.rise-delay-2 {
+.fade-up-2 {
   animation-delay: 0.16s;
 }
-.rise-delay-3 {
+.fade-up-3 {
   animation-delay: 0.24s;
+}
+.fade-up-4 {
+  animation-delay: 0.32s;
+}
+.fade-up-5 {
+  animation-delay: 0.4s;
+}
+
+.bounce-soft {
+  animation: bounce-soft 1.8s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .rise,
-  .rise-delay-1,
-  .rise-delay-2,
-  .rise-delay-3 {
+  .fade-up,
+  .fade-up-1,
+  .fade-up-2,
+  .fade-up-3,
+  .fade-up-4,
+  .fade-up-5,
+  .bounce-soft {
     animation: none;
   }
 }
@@ -103,10 +128,7 @@ body {
     radial-gradient(ellipse 60% 40% at 0% 100%, rgba(248, 144, 32, 0.08), transparent 50%);
 }
 
-.night-panel {
-  background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(8, 144, 64, 0.28), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(248, 144, 32, 0.12), transparent 50%),
-    var(--night);
-  color: var(--cream-on-dark);
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
 }

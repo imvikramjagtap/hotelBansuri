@@ -157,6 +157,67 @@ export function IconQuote(props: IconProps) {
   );
 }
 
+export function IconPhone(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.7a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.7a2 2 0 0 1 1.8 2Z" />
+    </svg>
+  );
+}
+
+export function IconMapPin(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
+export function IconMenu(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
+export function IconClose(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  );
+}
+
+export function IconChevronDown(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+export function IconNav(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <path d="m3 11 19-9-9 19-2-8-8-2Z" />
+    </svg>
+  );
+}
+
 export function StarRow({
   rating = 5,
   className = "text-brand-orange",
