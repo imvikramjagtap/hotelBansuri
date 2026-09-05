@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Newsreader } from "next/font/google";
+import { Figtree, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const figtree = Figtree({
@@ -8,18 +8,19 @@ const figtree = Figtree({
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const montserrat = Montserrat({
+  variable: "--font-display-family",
   subsets: ["latin"],
   display: "swap",
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Bansuri — Pure Veg Garden Restaurant near Shirdi",
+  title: "Kashvee's Bansuri Hotel — Pure Veg Garden near Shirdi",
   description:
-    "Pure vegetarian garden & family restaurant in Chandekasare on the Shirdi–Nashik Highway. Lawn seating, kids play area, free parking. Call +91 98901 48008.",
+    "Kashvee's Bansuri Hotel (काशीज् बांसुरी हॉटेल) — pure vegetarian garden & family restaurant in Chandekasare on the Shirdi–Nashik Highway. Call +91 98901 48008.",
   openGraph: {
-    title: "Bansuri — Pure Veg Garden Restaurant near Shirdi",
+    title: "Kashvee's Bansuri Hotel — Pure Veg near Shirdi",
     description:
       "Peaceful pure-veg garden dining for families and pilgrims. Open 8:30 AM – 11:30 PM.",
     type: "website",
@@ -30,14 +31,14 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1f6a45",
+  themeColor: "#089040",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${figtree.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>

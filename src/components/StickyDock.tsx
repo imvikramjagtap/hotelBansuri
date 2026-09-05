@@ -47,7 +47,7 @@ export function StickyDock() {
                 : {})}
               className={
                 item.primary
-                  ? "flex min-h-12 flex-col items-center justify-center rounded-xl bg-leaf px-2 py-2 text-center text-cream-on-dark active:bg-leaf-deep"
+                  ? "flex min-h-12 flex-col items-center justify-center rounded-xl bg-brand-orange px-2 py-2 text-center text-white active:bg-brand-orange-deep"
                   : "flex min-h-12 flex-col items-center justify-center rounded-xl border border-line bg-bg px-2 py-2 text-center text-ink active:bg-bg-deep"
               }
             >
@@ -55,7 +55,7 @@ export function StickyDock() {
               <span
                 className={
                   item.primary
-                    ? "mt-1 text-[0.65rem] leading-none text-cream-on-dark/80"
+                    ? "mt-1 text-[0.65rem] leading-none text-white/85"
                     : "mt-1 text-[0.65rem] leading-none text-muted"
                 }
               >

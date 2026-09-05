@@ -2,17 +2,35 @@
 
 export const restaurant = {
   name: "Bansuri",
-  fullName: "Bansuri Pure Veg Garden & Family Restaurant",
+  ownerBrand: "Kashvee's",
+  fullName: "Kashvee's Bansuri Hotel",
+  fullNameMr: "काशीज् बांसुरी हॉटेल",
+  listingName: "Bansuri Pure Veg Garden & Family Restaurant",
   tagline: "Pure veg. Open garden. Family table.",
   promise:
     "A peaceful pure-veg garden pause for families traveling to Shirdi — good food, open air, and space for kids.",
+  logos: {
+    en: {
+      src: "/brand/logo-en.png",
+      alt: "Kashvee's Bansuri Hotel logo",
+      width: 744,
+      height: 258,
+    },
+    mr: {
+      src: "/brand/logo-mr.png",
+      alt: "काशीज् बांसुरी हॉटेल लोगो",
+      width: 836,
+      height: 444,
+    },
+  },
   phoneDisplay: "+91 98901 48008",
   phoneTel: "+919890148008",
   whatsapp: "https://wa.me/919890148008",
-  mapsUrl:
-    "https://www.google.com/maps/place/Bansuri+pure+veg+garden+and+family+restaurant/@19.8231246,74.4509533,17z",
+  mapsUrl: "https://maps.app.goo.gl/XSHPgAACpUqtxpBs8",
   mapsEmbed:
     "https://maps.google.com/maps?q=19.8231246,74.4509533&z=15&output=embed",
+  /** Same Google listing — guests open Maps to read / leave reviews */
+  reviewsUrl: "https://maps.app.goo.gl/XSHPgAACpUqtxpBs8",
   locality: "Chandekasare, Sawali Vihir Kh.",
   region: "Maharashtra",
   pin: "423601",
@@ -21,10 +39,10 @@ export const restaurant = {
   distanceKopargaon: "About 7 km from Kopargaon",
   hours: "Daily 8:30 AM – 11:30 PM",
   hoursShort: "8:30 AM – 11:30 PM",
-  priceBand: "₹200–400 per person",
+  hoursOpen: "8:30 AM",
+  hoursClose: "11:30 PM",
   cuisine: "Indian · Pure vegetarian",
-  rating: "~4.0 / 5",
-  reviewCount: "~345 Google reviews",
+  rating: "4.0",
   localRank: "#1 of ~5 places to eat in Chandekasare",
   amenities: [
     { title: "Pure vegetarian kitchen", detail: "Full veg menu — clear trust for pilgrims and families." },
@@ -32,22 +50,33 @@ export const restaurant = {
     { title: "Kids play area", detail: "A kids zone guests mention again and again." },
     { title: "Free parking", detail: "Ample parking for cars on the Shirdi corridor." },
     { title: "Terrace dining", detail: "Especially nice for evening / dinner views." },
+    { title: "Birthday & party hall", detail: "Dedicated hall for birthdays and functions — call to book your celebration." },
     { title: "Takeaway & delivery", detail: "Listed for takeaway and delivery when you need a quick stop." },
     { title: "Card payments", detail: "Credit cards accepted." },
     { title: "Wheelchair accessible", detail: "Listed as accessible seating." },
   ],
+  whyIntro:
+    "Most roadside veg restaurants are a quick, forgettable break. Bansuri was built to be the opposite — a place worth slowing down for.",
   pillars: [
     {
-      title: "Pure veg certainty",
-      body: "No non-veg ambiguity — the first thing Shirdi-bound families need to know.",
+      id: "veg",
+      title: "Pure Vegetarian",
+      body: "A 100% vegetarian kitchen — no ambiguity, no compromise. Trusted by pilgrims, Jain families, and vegetarians alike.",
     },
     {
-      title: "Garden for the whole family",
-      body: "Lawn seating plus a kids play area so adults can eat while children stay busy.",
+      id: "garden",
+      title: "Garden & Lawn",
+      body: "Dine under open skies surrounded by greenery. A maintained garden and lawn — not a cramped highway dhaba box.",
     },
     {
-      title: "Easy highway stop",
-      body: "Long hours, free parking, and a calm pause on the Shirdi–Nashik stretch.",
+      id: "kids",
+      title: "Kids Play Area",
+      body: "A dedicated play zone keeps little ones happy while you relax. A rare find on the Shirdi highway.",
+    },
+    {
+      id: "parking",
+      title: "Ample Free Parking",
+      body: "Plenty of space to park with ease. Pull in, stretch out, and enjoy a calm meal before the road ahead.",
     },
   ],
   dishes: [
@@ -76,17 +105,20 @@ export const restaurant = {
     {
       quote:
         "Beautiful place… children’s play area, garden and lawn — food was authentic and too yummy.",
-      source: "Atmosphere-led guest · Google",
+      source: "Google review",
+      stars: 5,
     },
     {
       quote:
         "Pure veg restaurant and best quality of food… best veg restaurant near to Shirdi — must visit once.",
-      source: "Pilgrim traveler · Google",
+      source: "Google review",
+      stars: 5,
     },
     {
       quote:
         "Peaceful place. Loved the ambience. Food quality was awesome… ample parking space.",
-      source: "Highway traveler · Google",
+      source: "Google review",
+      stars: 5,
     },
   ],
   audiences: [
@@ -102,6 +134,16 @@ export const restaurant = {
       title: "Local families",
       need: "Weekend garden outing near Kopargaon / Chandekasare.",
     },
+  ],
+  photoSlots: [
+    { id: "lawn", label: "Garden & lawn", span: "lg:col-span-2 lg:row-span-2", minH: "min-h-[16rem] sm:min-h-[22rem]" },
+    { id: "food-1", label: "Signature plate", span: "", minH: "min-h-[11rem]" },
+    { id: "kids", label: "Kids play area", span: "", minH: "min-h-[11rem]" },
+    { id: "terrace", label: "Evening terrace", span: "sm:col-span-2 lg:col-span-1", minH: "min-h-[13rem]" },
+    { id: "hall", label: "Party hall", span: "lg:col-span-2", minH: "min-h-[12rem]" },
+    { id: "parking", label: "Parking", span: "", minH: "min-h-[10rem]" },
+    { id: "food-2", label: "Naan & paneer", span: "", minH: "min-h-[10rem]" },
+    { id: "family", label: "Family dining", span: "sm:col-span-2", minH: "min-h-[14rem]" },
   ],
   photos: {
     hero: {

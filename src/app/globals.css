@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f3f6f1;
-  --bg-deep: #e7eee4;
+  /* Brand from Kashvee's Bansuri Hotel logo boards */
+  --brand-orange: #f89020;
+  --brand-orange-deep: #e07810;
+  --leaf: #089040;
+  --leaf-deep: #067536;
+  --bg: #f7faf6;
+  --bg-deep: #eaf3ea;
   --ink: #142019;
   --ink-soft: #3a4a3f;
   --muted: #5c6b60;
-  --line: #c9d5cb;
-  --leaf: #1f6a45;
-  --leaf-deep: #134832;
-  --marigold: #d97706;
-  --marigold-deep: #b45309;
+  --line: #cfe0d1;
   --panel: #ffffff;
-  --night: #0f1a14;
+  --night: #101018;
   --cream-on-dark: #eef5ee;
 }
 
@@ -25,13 +26,15 @@
   --color-line: var(--line);
   --color-leaf: var(--leaf);
   --color-leaf-deep: var(--leaf-deep);
-  --color-marigold: var(--marigold);
-  --color-marigold-deep: var(--marigold-deep);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-deep: var(--brand-orange-deep);
+  --color-marigold: var(--brand-orange);
+  --color-marigold-deep: var(--brand-orange-deep);
   --color-panel: var(--panel);
   --color-night: var(--night);
   --color-cream-on-dark: var(--cream-on-dark);
   --font-sans: var(--font-figtree);
-  --font-display: var(--font-newsreader);
+  --font-display: var(--font-display-family);
 }
 
 * {
@@ -49,14 +52,13 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--leaf) 28%, white);
+  background: color-mix(in srgb, var(--brand-orange) 28%, white);
 }
 
 .font-display {
-  font-family: var(--font-newsreader), Georgia, serif;
+  font-family: var(--font-display-family), system-ui, sans-serif;
 }
 
-/* Soft page load — presence, not noise */
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -94,17 +96,17 @@ body {
   }
 }
 
-/* Leaf-vein texture for atmosphere sections */
 .vein-bg {
   background-color: var(--bg-deep);
   background-image:
-    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(31, 106, 69, 0.08), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(217, 119, 6, 0.06), transparent 50%);
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(8, 144, 64, 0.1), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(248, 144, 32, 0.08), transparent 50%);
 }
 
 .night-panel {
   background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(31, 106, 69, 0.35), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(8, 144, 64, 0.28), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(248, 144, 32, 0.12), transparent 50%),
     var(--night);
   color: var(--cream-on-dark);
 }
