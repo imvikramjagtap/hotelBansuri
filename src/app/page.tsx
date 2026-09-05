@@ -97,7 +97,7 @@ export default function Home() {
         <TrustStrip />
 
         {/* Why — Ref B cards + current copy */}
-        <section className="vein-bg px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-14" id="why">
+        <section className="px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-14" id="why">
           <div className="mx-auto max-w-6xl">
             <SectionHeading eyebrow="Why Bansuri" title="More than a highway stop" center>
               {r.whyIntro}

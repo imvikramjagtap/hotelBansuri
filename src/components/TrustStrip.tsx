@@ -16,7 +16,16 @@ export function TrustStrip() {
       aria-label="At a glance"
       className="relative z-20 -mt-20 px-4 sm:-mt-24 sm:px-6 lg:-mt-20"
     >
-      <div className="mx-auto max-w-5xl rounded-2xl border border-white/10 bg-night-soft/95 px-4 py-6 shadow-2xl shadow-black/40 backdrop-blur-md sm:px-8 sm:py-7">
+      {/*
+        Only the lower half gets Why's bg. A full-section bg would fill the
+        -mt overlap and paint over the hero, which looks like the strip moved.
+      */}
+      {/* <div
+        className="vein-bg pointer-events-none absolute inset-x-0 bottom-0 top-1/2 -z-10"
+        aria-hidden
+      /> */}
+
+      <div className="relative mx-auto max-w-5xl rounded-2xl border border-white/10 bg-night-soft/95 px-4 py-6 shadow-2xl shadow-black/40 backdrop-blur-md sm:px-8 sm:py-7">
         <div className="grid grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-4">
           <a
             href={r.reviewsUrl}
