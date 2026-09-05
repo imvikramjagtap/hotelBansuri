@@ -99,19 +99,22 @@ export const restaurant = {
   ],
   dishes: [
     {
-      name: "Garlic Butter Naan",
-      note: "Fresh from the tandoor — soft, buttery, and fragrant. The bread guests rave about.",
-      badge: "Must Order",
+      name: "Masala Khakhra",
+      note: "A giant crispy masala khakhra bowl — spiced, crunchy, and the plate guests photograph first.",
+      badge: "Signature",
+      image: "/photos/food-masala-khakhra.jpg",
     },
     {
       name: "Paneer Butter Masala",
       note: "Cottage cheese in a rich tomato gravy — classic comfort for family tables.",
       badge: "House Favourite",
+      image: "/photos/dining-hall.jpg",
     },
     {
       name: "Dal & thali favourites",
       note: "Home-style gravies, thalis, and everyday plates — ask for the full board in-store.",
       badge: "Comfort",
+      image: "/photos/dining-hall.jpg",
     },
   ],
   travelers: {
@@ -197,8 +200,16 @@ export const restaurant = {
           alt: "Bansuri double-decker glass dining pavilion rising above the garden near Shirdi",
         },
         {
+          src: "/photos/hero-desktop-deck-night.jpg",
+          alt: "Wide night view of Bansuri twin glass dining decks near Shirdi",
+        },
+        {
           src: "/photos/glass-deck-night.jpg",
           alt: "Bansuri pure veg glass dining pavilion lit up at night near Shirdi",
+        },
+        {
+          src: "/photos/hero-mobile-deck-sunset.jpg",
+          alt: "Sunset through Bansuri glass deck dining pavilion near Shirdi",
         },
         {
           src: "/photos/glass-deck-angle.jpg",
@@ -219,8 +230,16 @@ export const restaurant = {
           alt: "Nighttime lit archway entrance into the Bansuri pure veg garden near Shirdi",
         },
         {
+          src: "/photos/garden-entrance-deck-night.jpg",
+          alt: "Lit garden pergola and upper deck at Bansuri near Shirdi at night",
+        },
+        {
           src: "/photos/garden-night-palms.jpg",
           alt: "Palm-lined garden path at Bansuri family restaurant near Shirdi",
+        },
+        {
+          src: "/photos/garden-path-day.jpg",
+          alt: "Daytime stone garden path toward Bansuri dining decks near Shirdi",
         },
       ],
     },
@@ -231,6 +250,16 @@ export const restaurant = {
       minH: "min-h-[11rem]",
       src: "/photos/kids-play-area.jpg",
       alt: "Kids play area with swings and slide at Bansuri garden restaurant near Shirdi",
+      images: [
+        {
+          src: "/photos/kids-play-area.jpg",
+          alt: "Kids play area with swings and slide at Bansuri garden restaurant near Shirdi",
+        },
+        {
+          src: "/photos/garden-family-day.jpg",
+          alt: "Bansuri Pure Veg Family Garden with kids play area and outdoor seating near Shirdi",
+        },
+      ],
     },
     {
       id: "terrace",
@@ -239,6 +268,16 @@ export const restaurant = {
       minH: "min-h-[13rem]",
       src: "/photos/terrace-party-night.jpg",
       alt: "Upper glass deck at night at Kashvee's Bansuri Hotel near Shirdi",
+      images: [
+        {
+          src: "/photos/terrace-party-night.jpg",
+          alt: "Upper glass deck at night at Kashvee's Bansuri Hotel near Shirdi",
+        },
+        {
+          src: "/photos/garden-entrance-deck-night.jpg",
+          alt: "Upper deck glowing beside the lit garden entrance at Bansuri near Shirdi",
+        },
+      ],
     },
     {
       id: "sign",
@@ -300,6 +339,10 @@ export const restaurant = {
           src: "/photos/garden-swings-night.jpg",
           alt: "Covered twin garden swings glowing under string lights at night near Shirdi",
         },
+        {
+          src: "/photos/garden-family-day.jpg",
+          alt: "Daytime garden swings and family seating at Bansuri Pure Veg near Shirdi",
+        },
       ],
     },
     {
@@ -313,17 +356,22 @@ export const restaurant = {
   ],
   photos: {
     hero: {
-      src: "/photos/glass-deck-night.jpg",
-      alt: "Kashvee's Bansuri Hotel glass-deck dining pavilion near Shirdi lit up at night",
+      mobile: {
+        src: "/photos/hero-mobile-deck-sunset.jpg",
+        alt: "Sunset through Kashvee's Bansuri glass deck dining pavilion near Shirdi",
+      },
+      desktop: {
+        src: "/photos/hero-desktop-deck-night.jpg",
+        alt: "Kashvee's Bansuri Hotel twin glass dining decks lit up at night near Shirdi",
+      },
     },
-    /** No plated-food shots yet — dining hall stands in for kitchen ambience */
     food: {
-      src: "/photos/dining-hall.jpg",
-      alt: "Pure veg family dining hall at Bansuri garden restaurant near Shirdi",
+      src: "/photos/food-masala-khakhra.jpg",
+      alt: "Signature masala khakhra at Bansuri pure veg restaurant near Shirdi",
     },
     evening: {
-      src: "/photos/garden-night-palms.jpg",
-      alt: "Palm-lined garden path at Bansuri pure veg restaurant near Shirdi for evening dining",
+      src: "/photos/garden-entrance-deck-night.jpg",
+      alt: "Lit garden entrance and upper deck at Bansuri pure veg restaurant near Shirdi",
     },
   },
 } as const;

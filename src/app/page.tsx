@@ -192,7 +192,7 @@ export default function Home() {
                 >
                   <div className="relative h-56 overflow-hidden sm:h-64">
                     <Image
-                      src={r.photos.food.src}
+                      src={dish.image}
                       alt={dish.name}
                       fill
                       sizes="(max-width:768px) 100vw, 33vw"
@@ -247,38 +247,38 @@ export default function Home() {
             </div>
 
             <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-night/20">
-              <div className="relative h-[22rem] sm:h-[28rem]">
+              <div className="relative h-88 sm:h-112">
                 <Image
                   src={r.photos.evening.src}
                   alt={r.photos.evening.alt}
                   fill
                   sizes="(max-width:1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-bottom"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-b from-night/75 via-night/20 to-transparent" />
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-                <div className="rounded-2xl bg-panel/95 p-5 backdrop-blur-sm">
+              <div className="absolute inset-x-0 top-0 p-5 sm:p-7">
+                <div className="rounded-2xl border border-white/10 bg-night/70 p-5 backdrop-blur-sm">
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-center">
                       <p className="font-display text-3xl font-bold text-brand-orange">~7</p>
-                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                      <p className="text-[0.65rem] uppercase tracking-wider text-cream-on-dark/55">
                         km to Shirdi
                       </p>
                     </div>
-                    <div className="h-10 w-px bg-line" />
+                    <div className="h-10 w-px bg-white/15" />
                     <div className="text-center">
                       <p className="font-display text-3xl font-bold text-brand-orange">
                         {r.hoursOpen}
                       </p>
-                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                      <p className="text-[0.65rem] uppercase tracking-wider text-cream-on-dark/55">
                         Opening
                       </p>
                     </div>
-                    <div className="h-10 w-px bg-line" />
+                    <div className="h-10 w-px bg-white/15" />
                     <div className="text-center">
                       <p className="font-display text-3xl font-bold text-brand-orange">Hall</p>
-                      <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+                      <p className="text-[0.65rem] uppercase tracking-wider text-cream-on-dark/55">
                         Parties
                       </p>
                     </div>

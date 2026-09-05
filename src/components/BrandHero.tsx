@@ -16,12 +16,20 @@ export function BrandHero() {
     >
       <div className="absolute inset-0">
         <Image
-          src={r.photos.hero.src}
-          alt={r.photos.hero.alt}
+          src={r.photos.hero.mobile.src}
+          alt={r.photos.hero.mobile.alt}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center md:hidden"
+        />
+        <Image
+          src={r.photos.hero.desktop.src}
+          alt={r.photos.hero.desktop.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover object-center md:block"
         />
         <div className="absolute inset-0 bg-linear-to-b from-night/70 via-night/50 to-night/88" />
         <div className="absolute inset-0 bg-linear-to-r from-night/65 via-night/30 to-transparent" />
