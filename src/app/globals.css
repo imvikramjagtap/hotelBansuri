@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f3f6f1;
+  --bg-deep: #e7eee4;
+  --ink: #142019;
+  --ink-soft: #3a4a3f;
+  --muted: #5c6b60;
+  --line: #c9d5cb;
+  --leaf: #1f6a45;
+  --leaf-deep: #134832;
+  --marigold: #d97706;
+  --marigold-deep: #b45309;
+  --panel: #ffffff;
+  --night: #0f1a14;
+  --cream-on-dark: #eef5ee;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-leaf: var(--leaf);
+  --color-leaf-deep: var(--leaf-deep);
+  --color-marigold: var(--marigold);
+  --color-marigold-deep: var(--marigold-deep);
+  --color-panel: var(--panel);
+  --color-night: var(--night);
+  --color-cream-on-dark: var(--cream-on-dark);
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-newsreader);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-figtree), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--leaf) 28%, white);
+}
+
+.font-display {
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+/* Soft page load — presence, not noise */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.08s;
+}
+.rise-delay-2 {
+  animation-delay: 0.16s;
+}
+.rise-delay-3 {
+  animation-delay: 0.24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .rise-delay-1,
+  .rise-delay-2,
+  .rise-delay-3 {
+    animation: none;
+  }
+}
+
+/* Leaf-vein texture for atmosphere sections */
+.vein-bg {
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(31, 106, 69, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(217, 119, 6, 0.06), transparent 50%);
+}
+
+.night-panel {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(31, 106, 69, 0.35), transparent 55%),
+    var(--night);
+  color: var(--cream-on-dark);
 }

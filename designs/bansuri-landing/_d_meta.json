@@ -1,0 +1,32 @@
+{
+  "type": "design",
+  "designSystems": [],
+  "primaryDesignSystem": null,
+  "assets": {
+    "Bansuri Landing": {
+      "versions": [
+        {
+          "path": "Landing Page.html",
+          "createdAt": "2026-09-05T10:34:21.364Z",
+          "status": "needs-review",
+          "subtitle": "Scroll-spin veg pizza hero",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        }
+      ]
+    },
+    "Bansuri Landing v1 archive": {
+      "versions": [
+        {
+          "path": "Landing Page v1.html",
+          "createdAt": "2026-09-05T10:52:14.379Z",
+          "status": "changes-requested"
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-09-05T10:34:21.366Z",
+  "updatedAt": "2026-09-05T10:52:14.381Z"
+}

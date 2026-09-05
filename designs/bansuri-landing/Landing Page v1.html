@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bansuri — Pure Veg Garden Restaurant near Shirdi</title>
+  <meta name="description" content="Peaceful pure-veg garden dining for families and pilgrims near Shirdi. Lawn, kids play area, free parking. Chandekasare, Shirdi–Nashik Highway." />
+  <!--
+    Assumptions + design reasoning (manager brief)
+    ----------------------------------------------
+    Context: MARKET_RESEARCH.md — Bansuri is a pure-veg garden/family restaurant
+    on the Shirdi–Nashik corridor (Chandekasare), not lodging, not fine dining.
+    Choices confirmed: save designs/bansuri-landing/; no design system; hi-fi
+    interactive landing; mood = Garden dusk + Terrace dinner; audience = pilgrims
+    + highway travelers; EN first with MR placeholders; attributed stock slots.
+    Visual thesis: evening garden pause — deep forest, warm lamp gold, flute-soft
+    serif for the brand name. Hero is one composition: brand → place → promise → CTAs
+    over full-bleed outdoor dining photo. No party/event hard-sell (ops risk).
+    Stock photos are stand-ins; image-slots accept owner drops.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    :root {
+      --ink: oklch(0.17 0.03 160);
+      --ink-soft: oklch(0.28 0.035 155);
+      --forest: oklch(0.32 0.06 150);
+      --leaf: oklch(0.48 0.08 145);
+      --moss: oklch(0.55 0.07 140);
+      --gold: oklch(0.78 0.11 78);
+      --gold-deep: oklch(0.62 0.12 65);
+      --lamp: oklch(0.82 0.1 70);
+      --mist: oklch(0.94 0.015 95);
+      --paper: oklch(0.97 0.012 100);
+      --cream-text: oklch(0.95 0.02 90);
+      --muted: oklch(0.55 0.03 150);
+      --line: oklch(0.85 0.02 140);
+      --danger-soft: oklch(0.55 0.08 35);
+      --radius: 2px;
+      --font-display: "Fraunces", "Times New Roman", serif;
+      --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --nav-h: 4.25rem;
+      --max: 72rem;
+    }
+
+    [data-mood="terrace"] {
+      --ink: oklch(0.12 0.03 250);
+      --ink-soft: oklch(0.22 0.04 240);
+      --forest: oklch(0.26 0.05 200);
+      --leaf: oklch(0.42 0.06 180);
+      --gold: oklch(0.8 0.13 62);
+      --gold-deep: oklch(0.58 0.14 50);
+      --lamp: oklch(0.86 0.12 68);
+      --mist: oklch(0.9 0.02 70);
+      --paper: oklch(0.14 0.025 250);
+      --cream-text: oklch(0.94 0.025 80);
+      --muted: oklch(0.68 0.03 80);
+      --line: oklch(0.3 0.03 240);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--mist);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    [data-mood="terrace"] body,
+    html[data-mood="terrace"] body { background: oklch(0.11 0.02 250); color: var(--cream-text); }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+
+    .skip {
+      position: absolute; left: -999px; top: 0;
+      background: var(--gold); color: var(--ink); padding: 0.5rem 1rem; z-index: 100;
+    }
+    .skip:focus { left: 1rem; top: 1rem; }
+
+    /* ——— Nav ——— */
+    .site-nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      transition: background 0.4s var(--ease), backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .site-nav.is-solid {
+      background: color-mix(in oklch, var(--ink) 78%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom-color: color-mix(in oklch, var(--gold) 25%, transparent);
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 560;
+      letter-spacing: 0.02em;
+      color: var(--cream-text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex; gap: 1.5rem; align-items: center;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .nav-links a {
+      color: color-mix(in oklch, var(--cream-text) 88%, transparent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--gold);
+      color: var(--ink) !important;
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600 !important;
+      letter-spacing: 0.02em !important;
+    }
+    .nav-toggle {
+      display: none;
+      background: none; border: 1px solid color-mix(in oklch, var(--cream-text) 40%, transparent);
+      color: var(--cream-text); padding: 0.4rem 0.7rem; border-radius: var(--radius);
+    }
+
+    @media (max-width: 820px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        position: fixed; top: var(--nav-h); right: 0; left: 0;
+        flex-direction: column; align-items: stretch;
+        background: color-mix(in oklch, var(--ink) 94%, transparent);
+        padding: 1rem 1.25rem 1.5rem;
+        gap: 0;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s var(--ease), opacity 0.35s;
+      }
+      .nav-links.is-open {
+        transform: none; opacity: 1; pointer-events: auto;
+      }
+      .nav-links li { border-bottom: 1px solid color-mix(in oklch, var(--cream-text) 12%, transparent); }
+      .nav-links a { display: block; padding: 0.9rem 0; }
+      .nav-cta { margin-top: 0.75rem; justify-content: center; }
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
+      display: grid;
+      align-items: end;
+      color: var(--cream-text);
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .hero-media image-slot {
+      width: 100%; height: 100%;
+    }
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(to top,
+          oklch(0.12 0.03 160 / 0.92) 0%,
+          oklch(0.14 0.03 160 / 0.55) 42%,
+          oklch(0.16 0.03 160 / 0.25) 70%,
+          oklch(0.18 0.03 160 / 0.35) 100%),
+        radial-gradient(ellipse 80% 50% at 70% 20%, oklch(0.55 0.1 70 / 0.18), transparent 60%);
+    }
+    [data-mood="terrace"] .hero-scrim {
+      background:
+        linear-gradient(to top,
+          oklch(0.08 0.03 250 / 0.94) 0%,
+          oklch(0.1 0.03 250 / 0.6) 45%,
+          oklch(0.12 0.04 50 / 0.3) 100%),
+        radial-gradient(ellipse 70% 45% at 30% 80%, oklch(0.55 0.14 55 / 0.28), transparent 55%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 2rem) 0 3.5rem;
+      pointer-events: none;
+    }
+    .hero-content a, .hero-content .cta-row { pointer-events: auto; }
+
+    .brand-lockup {
+      margin: 0 0 1rem;
+      opacity: 0;
+      transform: translateY(1.25rem);
+      animation: rise 1s var(--ease) 0.15s forwards;
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 11vw, 7.5rem);
+      font-weight: 560;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin: 0;
+      text-shadow: 0 2px 40px oklch(0.1 0.02 160 / 0.45);
+    }
+    .brand-qual {
+      margin: 0.65rem 0 0;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .place-lock {
+      margin: 0.35rem 0 0;
+      font-size: 0.95rem;
+      color: color-mix(in oklch, var(--cream-text) 78%, transparent);
+      letter-spacing: 0.03em;
+    }
+    .hero-promise {
+      margin: 1.75rem 0 0;
+      max-width: 28rem;
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      font-weight: 400;
+      line-height: 1.45;
+      color: color-mix(in oklch, var(--cream-text) 92%, transparent);
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: rise 1s var(--ease) 0.35s forwards;
+    }
+    .cta-row {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      margin-top: 2rem;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: rise 1s var(--ease) 0.55s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1.35rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      transition: transform 0.25s var(--ease), background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .btn-primary:hover { background: var(--lamp); }
+    .btn-ghost {
+      background: transparent;
+      border-color: color-mix(in oklch, var(--cream-text) 45%, transparent);
+      color: var(--cream-text);
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn-dark {
+      background: var(--forest);
+      color: var(--cream-text);
+    }
+    [data-mood="terrace"] .btn-dark { background: oklch(0.28 0.05 200); }
+
+    .mr-note {
+      display: inline-block;
+      margin-left: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: color-mix(in oklch, var(--gold) 22%, transparent);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+    [data-mood="terrace"] .mr-note {
+      color: var(--gold);
+      background: color-mix(in oklch, var(--gold) 18%, transparent);
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ——— Sections ——— */
+    .section {
+      padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1rem, 3vw, 2.5rem);
+    }
+    .section-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin: 0 0 0.75rem;
+    }
+    [data-mood="terrace"] .eyebrow { color: var(--gold); }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      font-weight: 560;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.85rem;
+      max-width: 18ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 36rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+    [data-mood="terrace"] .lede { color: color-mix(in oklch, var(--cream-text) 70%, transparent); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.5rem);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    /* Why */
+    .why {
+      background: var(--paper);
+    }
+    [data-mood="terrace"] .why {
+      background: oklch(0.14 0.025 250);
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      margin-top: 3rem;
+      border-top: 1px solid var(--line);
+      padding-top: 2.5rem;
+    }
+    @media (max-width: 760px) {
+      .pillar-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 560;
+      margin: 0 0 0.5rem;
+    }
+    .pillar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    [data-mood="terrace"] .pillar p {
+      color: color-mix(in oklch, var(--cream-text) 68%, transparent);
+    }
+
+    /* Food */
+    .food {
+      background: color-mix(in oklch, var(--forest) 8%, var(--mist));
+    }
+    [data-mood="terrace"] .food {
+      background: oklch(0.12 0.03 240);
+    }
+    .food-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 800px) {
+      .food-layout { grid-template-columns: 1fr; }
+    }
+    .food-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-height: 34rem;
+      overflow: hidden;
+    }
+    .food-visual image-slot { width: 100%; height: 100%; }
+    .dish-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .dish-list li {
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .dish-list li:first-child { border-top: 1px solid var(--line); }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 560;
+      margin: 0 0 0.25rem;
+    }
+    .dish-note {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .provisional {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.35rem;
+    }
+    [data-mood="terrace"] .provisional { color: var(--gold); }
+
+    /* Travelers */
+    .travel {
+      background: var(--ink);
+      color: var(--cream-text);
+    }
+    .travel .eyebrow { color: var(--gold); }
+    .travel .lede { color: color-mix(in oklch, var(--cream-text) 72%, transparent); }
+    .fact-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.75rem;
+    }
+    @media (max-width: 720px) {
+      .fact-strip { grid-template-columns: 1fr 1fr; }
+    }
+    .fact {
+      border-left: 2px solid color-mix(in oklch, var(--gold) 55%, transparent);
+      padding-left: 1rem;
+    }
+    .fact strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 560;
+      margin-bottom: 0.25rem;
+    }
+    .fact span {
+      font-size: 0.88rem;
+      color: color-mix(in oklch, var(--cream-text) 65%, transparent);
+    }
+
+    /* Atmosphere */
+    .atmosphere {
+      background: var(--paper);
+      padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+    [data-mood="terrace"] .atmosphere {
+      background: oklch(0.13 0.025 250);
+    }
+    .atm-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) {
+      .atm-grid { grid-template-columns: 1fr; }
+    }
+    .atm-main {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      overflow: hidden;
+    }
+    .atm-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+    }
+    .atm-side > div {
+      position: relative;
+      overflow: hidden;
+      min-height: 10rem;
+    }
+    .atm-main image-slot,
+    .atm-side image-slot { width: 100%; height: 100%; }
+
+    /* Proof */
+    .proof {
+      background: color-mix(in oklch, var(--forest) 6%, var(--mist));
+    }
+    [data-mood="terrace"] .proof {
+      background: oklch(0.11 0.025 245);
+    }
+    .quotes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) {
+      .quotes { grid-template-columns: 1fr; }
+    }
+    .quote {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    .quote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 0 0 1rem;
+    }
+    .quote footer {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .rating-line {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .rating-line strong { color: inherit; font-weight: 700; }
+
+    /* Visit */
+    .visit {
+      background: var(--ink);
+      color: var(--cream-text);
+    }
+    .visit .eyebrow { color: var(--gold); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      margin-top: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .visit-grid { grid-template-columns: 1fr; }
+    }
+    .visit-meta dt {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 1.25rem 0 0.35rem;
+    }
+    .visit-meta dt:first-child { margin-top: 0; }
+    .visit-meta dd {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+    .visit-meta a {
+      color: var(--cream-text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .visit-meta a:hover { color: var(--gold); }
+    .map-frame {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: oklch(0.22 0.03 160);
+      overflow: hidden;
+    }
+    .map-frame iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(0.25) contrast(1.05);
+    }
+    [data-mood="terrace"] .map-frame iframe {
+      filter: grayscale(0.4) brightness(0.85) contrast(1.1);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: oklch(0.1 0.02 160);
+      color: color-mix(in oklch, var(--cream-text) 70%, transparent);
+      padding: 2rem clamp(1rem, 3vw, 2.5rem) 5rem;
+      font-size: 0.85rem;
+    }
+    [data-mood="terrace"] .site-footer {
+      background: oklch(0.07 0.02 250);
+    }
+    .footer-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--cream-text);
+    }
+
+    /* Tweaks */
+    .tweaks-fab {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 60;
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 28px oklch(0.1 0.02 160 / 0.35);
+    }
+    .tweaks-panel {
+      position: fixed;
+      right: 1rem;
+      bottom: 3.75rem;
+      z-index: 60;
+      width: min(18rem, calc(100vw - 2rem));
+      background: color-mix(in oklch, var(--ink) 94%, transparent);
+      color: var(--cream-text);
+      backdrop-filter: blur(14px);
+      border: 1px solid color-mix(in oklch, var(--gold) 35%, transparent);
+      padding: 1rem 1.1rem 1.15rem;
+      border-radius: 4px;
+      display: none;
+    }
+    .tweaks-panel.is-open { display: block; }
+    .tweaks-panel h2 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin: 0 0 0.85rem;
+      font-weight: 560;
+    }
+    .tweaks-panel label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0.75rem 0 0.4rem;
+    }
+    .tweaks-panel select,
+    .tweaks-panel .seg {
+      width: 100%;
+    }
+    .seg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem;
+    }
+    .seg button {
+      background: transparent;
+      border: 1px solid color-mix(in oklch, var(--cream-text) 30%, transparent);
+      color: var(--cream-text);
+      padding: 0.55rem 0.4rem;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .seg button.is-active {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+    .tweaks-panel .hint {
+      margin: 0.85rem 0 0;
+      font-size: 0.75rem;
+      color: color-mix(in oklch, var(--cream-text) 55%, transparent);
+      line-height: 1.4;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .brand-lockup, .hero-promise, .cta-row {
+        opacity: 1; transform: none; animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav" id="nav" data-screen-label="nav">
+    <a class="nav-brand" href="#top">Bansuri</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">Menu</button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#why">Why Bansuri</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#travel">For travelers</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a class="nav-cta" href="tel:+919890148008">Call</a></li>
+    </ul>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" data-screen-label="hero" aria-label="Bansuri hero">
+      <div class="hero-media" aria-hidden="true">
+        <image-slot
+          id="hero-garden"
+          shape="rect"
+          fit="cover"
+          placeholder="Drop garden / lawn outdoor dining photo"
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=2000&amp;q=80"
+          credit="Photo by shawnanggg on Unsplash"
+          credit-href="https://unsplash.com/@shawnanggg"
+        ></image-slot>
+      </div>
+      <div class="hero-scrim"></div>
+      <div class="hero-content">
+        <div class="brand-lockup">
+          <h1 class="brand-name">Bansuri</h1>
+          <p class="brand-qual">Pure Veg Garden &amp; Family Restaurant</p>
+          <p class="place-lock">Near Shirdi · Chandekasare · Shirdi–Nashik Highway</p>
+        </div>
+        <p class="hero-promise">
+          A peaceful pure-veg garden pause for families and pilgrims — open air, space for kids, easy parking.
+          <span class="mr-note" title="Marathi copy TBD">MR later</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+919890148008">Call +91 98901 48008</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/place/Bansuri+pure+veg+garden+and+family+restaurant/@19.8231246,74.4509533,17z" target="_blank" rel="noopener">Directions</a>
+          <a class="btn btn-ghost" href="#food">Menu highlights</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why" id="why" data-screen-label="why">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Why families stop here</p>
+        <h2>Garden dining with room to breathe</h2>
+        <p class="lede">
+          Not a cramped highway box — a maintained lawn, outdoor seating, and a kids play area so the whole table can slow down after (or before) darshan.
+          <span class="mr-note">MR later</span>
+        </p>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <h3>Pure veg, clearly</h3>
+            <p>All-vegetarian kitchen — the trust pilgrims and families look for on the Shirdi road.</p>
+          </article>
+          <article class="pillar">
+            <h3>Lawn &amp; kids zone</h3>
+            <p>Open garden seating plus a play area guests mention again and again.</p>
+          </article>
+          <article class="pillar">
+            <h3>Easy for the road</h3>
+            <p>Ample free parking, long hours, and a calm stop on the Shirdi–Nashik corridor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section food" id="food" data-screen-label="food">
+      <div class="section-inner reveal">
+        <p class="eyebrow">From starter to dessert</p>
+        <h2>Honest North Indian veg favorites</h2>
+        <p class="lede">
+          Mid-range comfort food guests praise for taste and value — typically ₹200–400 per person.
+          Dish names below are provisional until the owner confirms the full menu.
+        </p>
+        <div class="food-layout">
+          <div class="food-visual">
+            <image-slot
+              id="food-hero"
+              shape="rect"
+              fit="cover"
+              placeholder="Drop plated paneer / thali photo"
+              src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&amp;fit=crop&amp;w=1400&amp;q=80"
+              credit="Photo by Andy Hay on Unsplash"
+              credit-href="https://unsplash.com/@eastcoastkitchen"
+            ></image-slot>
+          </div>
+          <ul class="dish-list">
+            <li>
+              <p class="provisional">To confirm</p>
+              <h3 class="dish-name">Garlic / butter garlic naan</h3>
+              <p class="dish-note">Frequently called out as a standout bread.</p>
+            </li>
+            <li>
+              <p class="provisional">To confirm</p>
+              <h3 class="dish-name">Paneer butter masala</h3>
+              <p class="dish-note">Classic comfort gravy for family tables.</p>
+            </li>
+            <li>
+              <p class="provisional">To confirm</p>
+              <h3 class="dish-name">Paneer makhamali</h3>
+              <p class="dish-note">Mentioned as a house-leaning specialty — verify with kitchen.</p>
+            </li>
+            <li>
+              <p class="provisional">To confirm</p>
+              <h3 class="dish-name">Masala khakhra &amp; papad</h3>
+              <p class="dish-note">Light starts for a highway halt.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section travel" id="travel" data-screen-label="travel">
+      <div class="section-inner reveal">
+        <p class="eyebrow">For Shirdi &amp; highway travelers</p>
+        <h2>Know before you turn in</h2>
+        <p class="lede">
+          Roughly 6–7 km from the Sai Baba temple area — a standout pure-veg garden stop when you need parking, space, and a calm meal.
+          <span class="mr-note">MR later</span>
+        </p>
+        <div class="fact-strip">
+          <div class="fact">
+            <strong>~7 km</strong>
+            <span>from Shirdi temple area</span>
+          </div>
+          <div class="fact">
+            <strong>8:30 – 23:30</strong>
+            <span>daily hours</span>
+          </div>
+          <div class="fact">
+            <strong>Free parking</strong>
+            <span>ample lot for cars</span>
+          </div>
+          <div class="fact">
+            <strong>Pure veg</strong>
+            <span>full vegetarian menu</span>
+          </div>
+        </div>
+        <div class="cta-row" style="margin-top: 2.5rem;">
+          <a class="btn btn-primary" href="https://www.google.com/maps/place/Bansuri+pure+veg+garden+and+family+restaurant/@19.8231246,74.4509533,17z" target="_blank" rel="noopener">Open in Google Maps</a>
+          <a class="btn btn-ghost" href="https://wa.me/919890148008" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section atmosphere" id="atmosphere" data-screen-label="atmosphere">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Atmosphere</p>
+        <h2>Lawn by day, terrace by evening</h2>
+        <p class="lede">
+          Guests talk about a peaceful ambience, a well-kept garden, and terrace views that shine at dinner.
+          Replace these stand-in photos with your own lawn, kids zone, and evening shots.
+        </p>
+        <div class="atm-grid">
+          <div class="atm-main">
+            <image-slot
+              id="atm-lawn"
+              shape="rect"
+              fit="cover"
+              placeholder="Drop lawn / garden seating photo"
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+              credit="Photo by Jay Wennington on Unsplash"
+              credit-href="https://unsplash.com/@jaywennington"
+            ></image-slot>
+          </div>
+          <div class="atm-side">
+            <div>
+              <image-slot
+                id="atm-terrace"
+                shape="rect"
+                fit="cover"
+                placeholder="Drop evening terrace photo"
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                credit="Photo by Jay Wennington on Unsplash"
+                credit-href="https://unsplash.com/@jaywennington"
+              ></image-slot>
+            </div>
+            <div>
+              <image-slot
+                id="atm-kids"
+                shape="rect"
+                fit="cover"
+                placeholder="Drop kids play area photo"
+              ></image-slot>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof" id="proof" data-screen-label="proof">
+      <div class="section-inner reveal">
+        <p class="eyebrow">From guests</p>
+        <h2>Warm words from the road</h2>
+        <p class="lede">Paraphrased from public Google reviews — tone kept, not claimed as endorsement copy.</p>
+        <div class="quotes">
+          <blockquote class="quote">
+            <p>“Beautiful place… children’s play area, garden and lawn — food was authentic and too yummy.”</p>
+            <footer>Atmosphere-led guest · Google</footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“Pure veg… best quality food near Shirdi — must visit once.”</p>
+            <footer>Pilgrim traveler · Google</footer>
+          </blockquote>
+        </div>
+        <p class="rating-line">
+          <strong>~4.0 / 5</strong> on Google from <strong>~345 reviews</strong> · #1 of ~5 places to eat in Chandekasare
+        </p>
+      </div>
+    </section>
+
+    <section class="section visit" id="visit" data-screen-label="visit">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Visit</p>
+        <h2>Find us on the highway</h2>
+        <div class="visit-grid">
+          <dl class="visit-meta">
+            <dt>Name</dt>
+            <dd>Bansuri Pure Veg Garden &amp; Family Restaurant</dd>
+            <dt>Area</dt>
+            <dd>Chandekasare · Sawali Vihir Kh. · near Kopargaon / Shirdi, Maharashtra</dd>
+            <dt>Phone</dt>
+            <dd><a href="tel:+919890148008">+91 98901 48008</a></dd>
+            <dt>Hours</dt>
+            <dd>Daily 8:30 AM – 11:30 PM</dd>
+            <dt>Price band</dt>
+            <dd>About ₹200–400 per person</dd>
+            <dt>Languages</dt>
+            <dd>English now · Marathi site copy <span class="mr-note">placeholder</span></dd>
+            <dd style="margin-top: 1.75rem;">
+              <div class="cta-row">
+                <a class="btn btn-primary" href="tel:+919890148008">Call now</a>
+                <a class="btn btn-ghost" href="https://wa.me/919890148008" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </dd>
+          </dl>
+          <div class="map-frame">
+            <iframe
+              title="Bansuri on Google Maps"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=19.8231246,74.4509533&amp;z=15&amp;output=embed"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Bansuri</div>
+        <div>Pure veg garden restaurant · Near Shirdi</div>
+      </div>
+      <div>Stock photos are placeholders — drop real lawn, kids, and food shots onto any image.</div>
+    </div>
+  </footer>
+
+  <button type="button" class="tweaks-fab" id="tweaks-toggle" aria-expanded="false" aria-controls="tweaks">Tweaks</button>
+  <aside class="tweaks-panel" id="tweaks" data-screen-label="tweaks" hidden>
+    <h2>Explore</h2>
+    <label>Mood</label>
+    <div class="seg" role="group" aria-label="Mood">
+      <button type="button" class="is-active" data-mood-btn="dusk">Garden dusk</button>
+      <button type="button" data-mood-btn="terrace">Terrace dinner</button>
+    </div>
+    <label>Marathi labels</label>
+    <div class="seg" role="group" aria-label="Marathi labels">
+      <button type="button" class="is-active" data-mr-btn="on">Show</button>
+      <button type="button" data-mr-btn="off">Hide</button>
+    </div>
+    <p class="hint">Mood flips evening garden ↔ warmer terrace night. Replace Unsplash stand-ins by dropping owner photos onto each slot.</p>
+  </aside>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const nav = document.getElementById("nav");
+      const toggle = document.getElementById("nav-toggle");
+      const menu = document.getElementById("nav-menu");
+      const tweaksToggle = document.getElementById("tweaks-toggle");
+      const tweaks = document.getElementById("tweaks");
+
+      function setMood(mood) {
+        root.setAttribute("data-mood", mood);
+        localStorage.setItem("bansuri-mood", mood);
+        document.querySelectorAll("[data-mood-btn]").forEach(function (btn) {
+          btn.classList.toggle("is-active", btn.getAttribute("data-mood-btn") === mood);
+        });
+      }
+
+      function setMr(on) {
+        document.body.classList.toggle("hide-mr", !on);
+        localStorage.setItem("bansuri-mr", on ? "on" : "off");
+        document.querySelectorAll("[data-mr-btn]").forEach(function (btn) {
+          btn.classList.toggle("is-active", (btn.getAttribute("data-mr-btn") === "on") === on);
+        });
+      }
+
+      const style = document.createElement("style");
+      style.textContent = "body.hide-mr .mr-note { display: none; }";
+      document.head.appendChild(style);
+
+      setMood(localStorage.getItem("bansuri-mood") || "dusk");
+      setMr(localStorage.getItem("bansuri-mr") !== "off");
+
+      document.querySelectorAll("[data-mood-btn]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setMood(btn.getAttribute("data-mood-btn"));
+        });
+      });
+      document.querySelectorAll("[data-mr-btn]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setMr(btn.getAttribute("data-mr-btn") === "on");
+        });
+      });
+
+      tweaks.removeAttribute("hidden");
+      tweaksToggle.addEventListener("click", function () {
+        const open = !tweaks.classList.contains("is-open");
+        tweaks.classList.toggle("is-open", open);
+        tweaksToggle.setAttribute("aria-expanded", String(open));
+      });
+
+      toggle.addEventListener("click", function () {
+        const open = !menu.classList.contains("is-open");
+        menu.classList.toggle("is-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          menu.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      function onScroll() {
+        nav.classList.toggle("is-solid", window.scrollY > 40);
+      }
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) e.target.classList.add("is-in");
+            });
+          },
+          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+        );
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          io.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("is-in");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
