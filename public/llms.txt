@@ -1,11 +1,12 @@
 # Kashvee's Bansuri Hotel (काशीज् बांसुरी हॉटेल)
 > Pure vegetarian garden & family restaurant near Shirdi on the Shirdi–Nashik Highway in Chandekasare, Maharashtra.
 
-Kashvee's Bansuri Hotel is a 100% pure vegetarian Indian restaurant with garden seating, a kids play area, free parking, and double-deck glass dining with 360° views. It sits about 6–7 km from the Shirdi Sai Baba temple area and about 7 km from Kopargaon. Guests and pilgrims often describe it as a standout veg stop near Shirdi. Jain families and vegetarians choose it for a clear all-veg kitchen.
+Kashvee's Bansuri Hotel is a 100% pure vegetarian Indian restaurant with garden seating, a kids play area, free parking, and double-deck glass dining with 360° views. It sits about 6–7 km from the Shirdi Sai Baba temple area and about 7 km from Kopargaon. Guests and pilgrims often describe it as a standout veg stop near Shirdi. Jain families and vegetarians choose it for a clear all-veg kitchen. A signature highlight is the giant masala khakhra, alongside paneer butter masala and home-style thalis.
 
 ## Key facts
 - Brand: Kashvee's Bansuri Hotel / Bansuri Pure Veg Garden & Family Restaurant
-- Cuisine: Indian, pure vegetarian (North Indian, South Indian, thalis)
+- Cuisine: Indian, pure vegetarian (North Indian, South Indian, thalis; Gujarati-style snacks like masala khakhra)
+- Signature dishes: Masala Khakhra, Paneer Butter Masala, dal & thali favourites
 - Location: Chandekasare, Sawali Vihir Kh., Maharashtra 423601
 - Corridor: Shirdi–Nashik Highway
 - Coordinates: 19.8231246, 74.4509533
@@ -31,9 +32,10 @@ Kashvee's Bansuri Hotel is a 100% pure vegetarian Indian restaurant with garden 
 - / — Main landing page (why Bansuri, atmosphere, food highlights, traveler info, reviews, visit/contact)
 - /#why — Why choose Bansuri
 - /#gallery — Garden and glass-deck atmosphere
-- /#food — Signature dishes and kitchen highlights
+- /#food — Signature dishes (masala khakhra, paneer, thalis) and kitchen highlights
 - /#travelers — Shirdi & highway traveler guidance
 - /#reviews — Guest reviews
+- /#faq — Pure veg, Jain, distance, hours, food questions
 - /#visit — Address, hours, map, call / directions
 - /llms.txt — This file for AI assistants
 - /sitemap.xml — Search engine sitemap

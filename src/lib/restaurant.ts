@@ -39,6 +39,8 @@ export const restaurant = {
   phoneDisplay: "+91 98901 48008",
   phoneTel: "+919890148008",
   whatsapp: "https://wa.me/919890148008",
+  instagram: "https://www.instagram.com/bansuri_pureveg_restaurant/",
+  instagramHandle: "@bansuri_pureveg_restaurant",
   mapsUrl: "https://maps.app.goo.gl/XSHPgAACpUqtxpBs8",
   mapsEmbed:
     "https://maps.google.com/maps?q=19.8231246,74.4509533&z=15&output=embed",
@@ -100,13 +102,13 @@ export const restaurant = {
   dishes: [
     {
       name: "Masala Khakhra",
-      note: "A giant crispy masala khakhra bowl — spiced, crunchy, and the plate guests photograph first.",
+      note: "A giant crispy masala khakhra bowl — spiced, crunchy, and the plate guests photograph first. A standout snack stop near Shirdi.",
       badge: "Signature",
       image: "/photos/food-masala-khakhra.jpg",
     },
     {
       name: "Paneer Butter Masala",
-      note: "Cottage cheese in a rich tomato gravy — classic comfort for family tables.",
+      note: "Cottage cheese in a rich tomato gravy — classic pure-veg comfort for family tables after darshan.",
       badge: "House Favourite",
       image: "/photos/dining-hall.jpg",
     },

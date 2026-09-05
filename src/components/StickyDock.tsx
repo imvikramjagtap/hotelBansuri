@@ -11,22 +11,23 @@ type DockItem = {
 export function StickyDock() {
   const items: DockItem[] = [
     {
-      href: `tel:${restaurant.phoneTel}`,
-      label: "Call",
-      sub: "Phone",
-      primary: true,
-    },
-    {
       href: restaurant.mapsUrl,
       label: "Maps",
       sub: "Directions",
-      primary: false,
+      primary: true,
       external: true,
     },
     {
       href: restaurant.whatsapp,
       label: "WhatsApp",
       sub: "Chat",
+      primary: false,
+      external: true,
+    },
+    {
+      href: restaurant.instagram,
+      label: "Instagram",
+      sub: "Photos",
       primary: false,
       external: true,
     },

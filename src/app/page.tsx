@@ -13,6 +13,7 @@ import {
   IconClock,
   IconGarden,
   IconGoogle,
+  IconInstagram,
   IconKids,
   IconLeaf,
   IconMapPin,
@@ -107,7 +108,7 @@ export default function Home() {
 
       <SiteHeader />
 
-      <main className="flex-1 pb-28 md:pb-0">
+      <main className="flex-1">
         <BrandHero />
         <TrustStrip />
 
@@ -193,7 +194,7 @@ export default function Home() {
                   <div className="relative h-56 overflow-hidden sm:h-64">
                     <Image
                       src={dish.image}
-                      alt={dish.name}
+                      alt={`${dish.name} at Kashvee's Bansuri pure veg restaurant near Shirdi`}
                       fill
                       sizes="(max-width:768px) 100vw, 33vw"
                       className="object-cover transition duration-700 group-hover:scale-110"
@@ -442,6 +443,27 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">
+                      <IconInstagram className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-cream-on-dark">
+                        Instagram
+                      </h3>
+                      <a
+                        href={r.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 block text-sm text-brand-orange hover:text-brand-orange-deep"
+                      >
+                        {r.instagramHandle}
+                      </a>
+                      <p className="text-sm text-cream-on-dark/60">
+                        Photos, updates &amp; daily specials
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -478,7 +500,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-night px-4 py-12 text-cream-on-dark sm:px-6">
+      <footer className="border-t border-white/10 bg-night px-4 py-12 pb-28 text-cream-on-dark sm:px-6 md:pb-12">
         <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
           <div>
             <Image
@@ -492,6 +514,15 @@ export default function Home() {
               {r.fullName} · {r.fullNameMr}. Pure vegetarian garden &amp; family restaurant near
               Shirdi on the {r.corridor} — trusted by pilgrims and Jain families.
             </p>
+            <a
+              href={r.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-cream-on-dark/80 transition hover:border-brand-orange/40 hover:text-brand-orange"
+            >
+              <IconInstagram className="h-4 w-4" />
+              Follow on Instagram
+            </a>
           </div>
           <div>
             <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-brand-orange">
@@ -505,6 +536,15 @@ export default function Home() {
               <p>
                 {r.hoursShort} · Open daily
               </p>
+              <a
+                href={r.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-cream-on-dark/50 hover:text-brand-orange"
+              >
+                <IconInstagram className="h-4 w-4" />
+                {r.instagramHandle}
+              </a>
             </div>
           </div>
           <div>

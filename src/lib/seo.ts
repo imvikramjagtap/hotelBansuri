@@ -9,9 +9,9 @@ export const seo = {
     "Kashvee's Bansuri Hotel | Pure Veg Garden Restaurant near Shirdi",
   titleShort: "Pure Veg Garden Restaurant near Shirdi | Bansuri",
   description:
-    "Kashvee's Bansuri Hotel (काशीज् बांसुरी हॉटेल) — 100% pure vegetarian garden & family restaurant near Shirdi on the Shirdi–Nashik Highway, Chandekasare. Trusted by pilgrims & Jain families. Kids play area, free parking, glass-deck dining. Open daily 8:30 AM–11:30 PM. Call +91 98901 48008.",
+    "Kashvee's Bansuri Hotel (काशीज् बांसुरी हॉटेल) — 100% pure vegetarian garden & family restaurant near Shirdi on the Shirdi–Nashik Highway, Chandekasare. Known for signature masala khakhra, paneer favourites, kids play area, free parking & glass-deck dining. Trusted by pilgrims & Jain families. Open daily 8:30 AM–11:30 PM. Call +91 98901 48008.",
   ogDescription:
-    "Standout pure-veg garden stop near Shirdi for families and pilgrims — glass-deck views, kids play area, free parking. Chandekasare · Shirdi–Nashik Highway.",
+    "Standout pure-veg garden stop near Shirdi — signature masala khakhra, glass-deck views, kids play area, free parking. Chandekasare · Shirdi–Nashik Highway.",
   keywords: [
     "pure veg restaurant near Shirdi",
     "vegetarian restaurant Shirdi",
@@ -26,12 +26,14 @@ export const seo = {
     "veg restaurant Kopargaon",
     "Sai Baba temple food nearby",
     "kids play area restaurant Shirdi",
+    "masala khakhra near Shirdi",
   ],
+  /** Prefer ~1.9:1 share crop; family garden reads clearer in link previews than ultra-wide hero. */
   ogImage: {
-    url: "/photos/glass-deck-night.jpg",
-    width: 1600,
-    height: 1200,
-    alt: "Kashvee's Bansuri Hotel glass-deck dining pavilion near Shirdi at night",
+    url: "/photos/garden-family-day.jpg",
+    width: 1826,
+    height: 894,
+    alt: "Family garden seating at Kashvee's Bansuri pure veg restaurant near Shirdi",
   },
 } as const;
 
@@ -62,6 +64,11 @@ export const faqs = [
     answer:
       "Yes. Guests love the garden lawn, outdoor seating, kids play zone, and our double-deck glass dining pavilion with 360° views, covered for every season.",
   },
+  {
+    question: "What food is Bansuri known for?",
+    answer:
+      "Signature masala khakhra, paneer butter masala, and home-style dal & thali favourites from a 100% vegetarian kitchen. Full North and South Indian menu is available in-store.",
+  },
 ] as const;
 
 export function buildRestaurantJsonLd() {
@@ -78,16 +85,33 @@ export function buildRestaurantJsonLd() {
     url: site,
     image: [
       image,
+      `${site}${r.photos.hero.desktop.src}`,
+      `${site}/photos/food-masala-khakhra.jpg`,
       `${site}/photos/exterior-overview.jpg`,
       `${site}/photos/kids-play-area.jpg`,
-      `${site}/photos/dining-hall.jpg`,
+      `${site}/photos/glass-deck-night.jpg`,
     ],
     telephone: r.phoneTel,
-    servesCuisine: ["Indian", "Vegetarian", "North Indian", "South Indian"],
+    servesCuisine: ["Indian", "Vegetarian", "North Indian", "South Indian", "Gujarati"],
     priceRange: "₹₹",
     acceptsReservations: "True",
     menu: `${site}/#food`,
-    hasMenu: `${site}/#food`,
+    hasMenu: {
+      "@type": "Menu",
+      name: "Bansuri pure veg highlights",
+      url: `${site}/#food`,
+      hasMenuSection: {
+        "@type": "MenuSection",
+        name: "Guest favourites",
+        hasMenuItem: r.dishes.map((dish) => ({
+          "@type": "MenuItem",
+          name: dish.name,
+          description: dish.note,
+          image: `${site}${dish.image}`,
+          suitableForDiet: "https://schema.org/VegetarianDiet",
+        })),
+      },
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: r.locality,
@@ -131,7 +155,7 @@ export function buildRestaurantJsonLd() {
       { "@type": "LocationFeatureSpecification", name: "Wheelchair accessible", value: true },
       { "@type": "LocationFeatureSpecification", name: "Party / banquet hall", value: true },
     ],
-    sameAs: [r.mapsUrl],
+    sameAs: [r.mapsUrl, r.instagram],
     areaServed: [
       { "@type": "Place", name: "Shirdi" },
       { "@type": "Place", name: "Kopargaon" },

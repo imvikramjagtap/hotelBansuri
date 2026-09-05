@@ -218,6 +218,18 @@ export function IconNav(props: IconProps) {
   );
 }
 
+export function IconInstagram(props: IconProps) {
+  const { children, ...p } = base(props);
+  return (
+    <svg {...p}>
+      {children}
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export function StarRow({
   rating = 5,
   className = "text-brand-orange",
